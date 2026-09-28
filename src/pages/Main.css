@@ -1,0 +1,177 @@
+/* Первый экран: название магазина и кнопки действия. */
+.hero {
+  padding: 76px 0 64px;
+  border-bottom: 1px solid var(--border);
+  background:
+    radial-gradient(600px 300px at 12% 0%, var(--brand-glow), transparent 65%),
+    linear-gradient(180deg, var(--bg-soft), transparent);
+}
+
+.hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  max-width: 780px;
+}
+
+.hero__tagline {
+  font-size: clamp(18px, 2.4vw, 22px);
+  color: var(--text);
+}
+
+.hero__meta {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* Блок «О магазине»: четыре факта. */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 20px;
+}
+
+.feature__title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--brand-hover);
+}
+
+.feature__text {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Сетка товаров: на широком экране пять карточек в ряд. */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 18px;
+}
+
+.section-link {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brand-hover);
+}
+
+.section-link:hover {
+  text-decoration: underline;
+}
+
+/* Блок «Как купить». */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: none;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+}
+
+.step__number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--brand-soft);
+  border: 1px solid var(--brand);
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--brand-hover);
+}
+
+.step__title {
+  font-size: 17px;
+}
+
+.step__text {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Блок отзывов. */
+.reviews {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px;
+}
+
+.reviews__text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 640px;
+}
+
+.reviews__text p {
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+/* Нижний призыв к действию. */
+.cta {
+  padding: 48px 0 64px;
+}
+
+.cta__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 32px;
+  border: 1px solid var(--brand);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(500px 220px at 85% 0%, var(--brand-soft), transparent 70%),
+    linear-gradient(180deg, var(--surface-2), var(--surface));
+}
+
+.cta__text {
+  margin-top: 6px;
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 700px) {
+  .hero {
+    padding: 48px 0 40px;
+  }
+
+  .reviews {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cta__inner {
+    padding: 24px;
+  }
+}
