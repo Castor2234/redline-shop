@@ -83,7 +83,6 @@ export default function Main() {
         <div className="container">
           <div className="section-title">
             <h2>О магазине</h2>
-            <p>Без корзины и регистрации — заказ оформляется в переписке.</p>
           </div>
           <div className="features">
             {FEATURES.map((feature) => (
