@@ -1,3 +1,8 @@
+/**
+ * Все данные, которые нужно поменять под себя, собраны здесь.
+ * Ники пишутся без «@».
+ */
+
 export const SHOP = {
   name: 'ReDLine Shop',
   tagline: 'Донат в игры без лишних шагов',
@@ -7,10 +12,12 @@ export const SHOP = {
 
   /** Ссылка на канал/чат с отзывами. */
   reviewsUrl: 'https://t.me/redlineshopchat',
-  
+  reviewsLabel: '@redlineshopchat',
+
   /** Сколько времени обычно занимает выдача — показывается на главной. */
   deliveryTime: '5–15 минут',
   workingHours: '10:00 — 02:00 (МСК)',
+  since: 2023,
 }
 
 export type Contact = {
@@ -19,7 +26,7 @@ export type Contact = {
   description: string
 }
 
-/** Три контакта для страницы «Контакты». */
+/** Контакты — показываются на странице «Вопросы». */
 export const CONTACTS: Contact[] = [
   {
     role: 'Заказы и оплата',
@@ -28,12 +35,12 @@ export const CONTACTS: Contact[] = [
   },
   {
     role: 'Поддержка',
-    username: '???redline_help',
-    description: '???Если заказ задерживается, донат не пришёл или нужно изменить данные аккаунта.',
+    username: 'redline_help',
+    description: 'Если заказ задерживается, донат не пришёл или нужно изменить данные аккаунта.',
   },
   {
     role: 'Опт и сотрудничество',
-    username: '???redline_partner',
-    description: '???Крупные объёмы, реселл, реклама и совместные розыгрыши.',
+    username: 'redline_partner',
+    description: 'Крупные объёмы, реселл, реклама и совместные розыгрыши.',
   },
 ]

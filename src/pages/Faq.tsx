@@ -1,3 +1,119 @@
+import { Link } from 'react-router'
+import { CONTACTS, SHOP } from '../config'
+import { chatUrl } from '../helpers/telegram'
+import './Faq.css'
+
+/** Частые вопросы: обновлять тексты можно прямо здесь. */
+const QUESTIONS: { q: string; a: string }[] = [
+  {
+    q: 'Как оформить заказ?',
+    a: 'Выберите товар в каталоге и нажмите «Купить» — откроется Telegram с уже готовым текстом заказа. Или просто напишите нам в Telegram: назовите товар и что от вас нужно (ID, тег, ник).',
+  },
+  {
+    q: `Как быстро приходит заказ?`,
+    a: `Обычно выдача занимает ${SHOP.deliveryTime} после оплаты. В часы пик или при задержке со стороны платформы может дольше — мы всегда предупреждаем об этом в переписке.`,
+  },
+  {
+    q: 'Как происходит оплата?',
+    a: 'Оплата по реквизитам в переписке (СБП, карта или звёзды — как вам удобнее). Реквизиты присылаем только мы: на сайте нет формы оплаты, сайт — витрина.',
+  },
+  {
+    q: 'Что нужно от меня для заказа?',
+    a: 'Всё написано в карточке товара в строке «Нужно:» — это ID аккаунта, тег игрока, ник или почта. Пароли от аккаунта мы НЕ просим никогда.',
+  },
+  {
+    q: 'Гарантии и что если товар не пришёл?',
+    a: 'Если донат не пришёл или пришёл не полностью — вернём деньги или дозаказываем бесплатно. Претензии принимаем в поддержке, срок ответа — до 30 минут в рабочее время.',
+  },
+  {
+    q: 'Работаете с ютуберами и оптом?',
+    a: 'Да. Крупные объёмы, реселл, реклама и совместные розыгрыши — пишите в контакт «Опт и сотрудничество», обсудим условия.',
+  },
+  {
+    q: 'Можно ли вернуть деньги?',
+    a: 'До выдачи товара — да, в любой момент. После выдачи возврат возможен только если товар не был доставлен — это прописано в правилах выдачи.',
+  },
+]
+
+/** Вопросы и ответы: аккордеон, отзывы и все контакты магазина. */
 export default function FAQ() {
-  return <h1>Faq Page</h1>;
+  return (
+    <>
+      <section className="page-head">
+        <div className="container">
+          <h1>Вопросы и ответы</h1>
+          <p>
+            Коротко о заказе, оплате и выдаче. Не нашли ответ — напишите нам
+            в Telegram, ответим в рабочее время.
+          </p>
+        </div>
+      </section>
+
+      <section className="section faq">
+        <div className="container faq__grid">
+          <div className="faq__list">
+            <h2>Частые вопросы</h2>
+            {QUESTIONS.map((item) => (
+              <details className="faq__item card" key={item.q}>
+                <summary className="faq__question">
+                  <span>{item.q}</span>
+                  <span className="faq__chevron" aria-hidden="true">
+                    +
+                  </span>
+                </summary>
+                <p className="faq__answer">{item.a}</p>
+              </details>
+            ))}
+          </div>
+
+          <aside className="faq__side">
+            <div className="faq__reviews card">
+              <h3>Отзывы</h3>
+              <p className="muted">
+                Реальные отзывы покупателей — в открытом Telegram-канале. Там
+                же видна история выдачи заказов.
+              </p>
+              <a
+                className="btn btn--primary"
+                href={SHOP.reviewsUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Читать отзывы {SHOP.reviewsLabel}
+              </a>
+              <Link className="faq__side-link" to="/catalog">
+                Перейти в каталог →
+              </Link>
+            </div>
+
+            <div className="faq__contacts card">
+              <h3>Контакты</h3>
+              {CONTACTS.map((contact) => (
+                <div className="faq__contact" key={contact.username}>
+                  <span className="tag tag--brand">{contact.role}</span>
+                  <a
+                    className="faq__contact-name"
+                    href={chatUrl(contact.username)}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    @{contact.username}
+                  </a>
+                  <p className="muted">{contact.description}</p>
+                </div>
+              ))}
+              <a
+                className="btn btn--ghost"
+                href={chatUrl(SHOP.sellerUsername)}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Написать в Telegram
+              </a>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </>
+  )
 }
