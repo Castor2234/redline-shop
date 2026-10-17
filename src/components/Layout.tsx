@@ -67,6 +67,21 @@ export default function Layout() {
           </div>
           
           <div className="footer__col">
+            <h3 className="footer__title">Покупка</h3>
+            <p className="footer__text">
+              По поводу покупки любого товара писать Артуру.
+            </p>
+            <a
+              className="footer__link footer__link--accent"
+              href={SHOP.sellerUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {SHOP.sellerUsername}
+            </a>
+          </div>
+
+          <div className="footer__col">
             <h3 className="footer__title">Отзывы</h3>
             <p className="footer__text">
               Реальные отзывы покупателей — в открытом Telegram-канале.
