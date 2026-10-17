@@ -19,6 +19,7 @@ export default function Layout() {
       <header className="header">
         <div className="container header__inner">
           <Link className="logo" to="/" aria-label={`${SHOP.name} — на главную`}>
+            <img className="logo__icon" src="/assets/rl_icon.jpg" alt="" />
             <span className="logo__accent">ReD</span>
             <span>Line Shop</span>
           </Link>

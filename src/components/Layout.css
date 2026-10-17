@@ -33,12 +33,22 @@
 
 .logo {
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   gap: 1px;
   font: 400 30px/1 var(--font-display);
   text-transform: uppercase;
   letter-spacing: 0.02em;
   color: var(--text);
+}
+
+/* Иконка слева от текста логотипа в шапке (public/assets/rl_icon.jpg). */
+.logo__icon {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin-right: 8px;
 }
 
 .logo__accent {
@@ -157,6 +167,11 @@
     gap: 12px;
     padding-top: 12px;
     padding-bottom: 12px;
+  }
+
+  .logo__icon {
+    width: 32px;
+    height: 32px;
   }
 
   .nav {
