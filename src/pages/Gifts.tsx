@@ -17,6 +17,11 @@ type GiftEmoji = {
  */
 const GIFT_EMOJIS: GiftEmoji[] = [
   {
+    title: 'БОЛЬШЕ ПОДАРКОВ, КУПИТЬ ДОНАТ',
+    image: '/assets/brawl_crates.jpg',
+    link: 'https://t.me/mobilegemss',
+  },
+  {
     title: 'Спайк ОК',
     image: '/assets/emojis/spike_ok.png',
     link: 'https://link.brawlstars.com/ru/voucher/da19cd17-68af-4ed9-8671-b974a3a73356',
