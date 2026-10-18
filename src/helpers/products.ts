@@ -170,6 +170,7 @@ export const PRODUCTS: Product[] = [
     priceByn: 90,
     requires: 'Заход на аккаунт (код с почты)',
     note: 'Текущий сезон',
+    popular: true,
     keywords: ['клэш',"клеш", 'пропуск', 'ройал'],
   },
   {
@@ -215,6 +216,7 @@ export const PRODUCTS: Product[] = [
     price: 999,
     priceByn: 38,
     requires: 'Заход на аккаунт (код с почты)',
+    popular: true,
     keywords: ['клеш', 'клэш', 'клэнс', 'пасс'],
   },
   
@@ -229,6 +231,7 @@ export const PRODUCTS: Product[] = [
     priceByn: 136,
     requires: 'Заход на аккаунт (код с почты)',
     note: 'Текущий сезон',
+    popular: true,
     keywords: ['чатгпт', 'чат', 'гпт'],
   },
 ]
