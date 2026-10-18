@@ -7,7 +7,9 @@ import {
   productsWord,
   popularSubcategories,
 } from '../helpers/products'
-import { chatUrl, formatPrice } from '../helpers/telegram'
+import { chatUrl } from '../helpers/telegram'
+import { formatAmount, productPrice } from '../helpers/currency'
+import { useCurrency } from '../components/CurrencyProvider'
 import './Main.css'
 
 /** Сколько популярных категорий показываем на главной. */
@@ -35,6 +37,7 @@ const FEATURES = [
 
 /** Главная: короткая инфо о магазине и популярные категории. */
 export default function Main() {
+  const { currency } = useCurrency()
   const telegramUrl = chatUrl(SHOP.sellerUsername)
   const popular = popularSubcategories(PRODUCTS, POPULAR_LIMIT)
 
@@ -96,7 +99,9 @@ export default function Main() {
           <div className="pop-grid">
             {popular.map((subcategory) => {
               const products = productsOfSubcategory(PRODUCTS, subcategory)
-              const minPrice = Math.min(...products.map((product) => product.price))
+              const minPrice = Math.min(
+                ...products.map((product) => productPrice(product, currency)),
+              )
 
               return (
                 <Link
@@ -112,7 +117,7 @@ export default function Main() {
                   <span className="pop-card__name">{subcategory}</span>
                   <span className="pop-card__meta">
                     {products.length} {productsWord(products.length)} · от{' '}
-                    {formatPrice(minPrice)}
+                    {formatAmount(minPrice, currency)}
                   </span>
                   <span className="pop-card__arrow" aria-hidden="true">
                     →

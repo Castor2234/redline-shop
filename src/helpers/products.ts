@@ -4,6 +4,7 @@ import type { BigCategory, Product } from '../types'
  * Каталог. Добавить товар = добавить объект в массив.
  * category: 'Games' | 'Other' — два больших раздела.
  * subcategory: подраздел внутри раздела («Brawl Stars», «ChatGPT»…).
+ * price / priceByn: цены проставляются вручную для каждой валюты (RUB / BYN).
  * popular: true — подраздел попадает в блок «Популярное» на главной.
  */
 export const PRODUCTS: Product[] = [
@@ -14,6 +15,7 @@ export const PRODUCTS: Product[] = [
     subcategory: 'Brawl Stars',
     title: '170 гемов',
     price: 690,
+    priceByn: 25,
     requires: 'Тег игрока',
     popular: true,
     keywords: ['бравл', 'гемы', 'gems'],
@@ -24,6 +26,7 @@ export const PRODUCTS: Product[] = [
     subcategory: 'Brawl Stars',
     title: '360 гемов',
     price: 1290,
+    priceByn: 46,
     requires: 'Тег игрока',
     keywords: ['бравл', 'гемы', 'gems'],
   },
@@ -33,6 +36,7 @@ export const PRODUCTS: Product[] = [
     subcategory: 'Brawl Stars',
     title: 'Brawl Pass',
     price: 650,
+    priceByn: 23,
     requires: 'Тег игрока',
     note: 'Текущий сезон',
     keywords: ['бравл', 'пропуск', 'пасс', 'pass'],
@@ -43,6 +47,7 @@ export const PRODUCTS: Product[] = [
     subcategory: 'Brawl Stars',
     title: 'Brawl Pass Plus',
     price: 1250,
+    priceByn: 45,
     requires: 'Тег игрока',
     note: 'Текущий сезон',
     keywords: ['бравл', 'пропуск', 'пасс', 'pass', 'plus'],
@@ -55,6 +60,7 @@ export const PRODUCTS: Product[] = [
     subcategory: 'Clash Royale',
     title: '500 гемов',
     price: 620,
+    priceByn: 22,
     requires: 'Тег игрока',
     keywords: ['клеш', 'клэш', 'роял', 'гемы', 'gems'],
   },
@@ -64,6 +70,7 @@ export const PRODUCTS: Product[] = [
     subcategory: 'Clash Royale',
     title: '2500 гемов',
     price: 2790,
+    priceByn: 100,
     requires: 'Тег игрока',
     keywords: ['клеш', 'клэш', 'роял', 'гемы', 'gems'],
   },
@@ -73,6 +80,7 @@ export const PRODUCTS: Product[] = [
     subcategory: 'Clash Royale',
     title: 'Pass Royale',
     price: 640,
+    priceByn: 23,
     requires: 'Тег игрока',
     note: 'Текущий сезон',
     keywords: ['клеш', 'роял', 'пропуск', 'пасс', 'pass'],

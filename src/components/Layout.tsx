@@ -1,6 +1,8 @@
 import { Link, NavLink, Outlet } from 'react-router'
 import { SHOP } from '../config'
 import { chatUrl } from '../helpers/telegram'
+import { CURRENCIES, CURRENCY_LABELS, CURRENCY_SYMBOLS } from '../helpers/currency'
+import { useCurrency } from './CurrencyProvider'
 import './Layout.css'
 
 const NAV_ITEMS = [
@@ -11,6 +13,8 @@ const NAV_ITEMS = [
 
 /** Общая оболочка сайта: шапка с навигацией, контент и подвал. */
 export default function Layout() {
+  const { currency, setCurrency } = useCurrency()
+
   return (
     <>
       {/* Фон раскладки: pattern из assets за контентом всех страниц. */}
@@ -38,6 +42,25 @@ export default function Layout() {
               </NavLink>
             ))}
           </nav>
+
+          <div className="currency" role="group" aria-label="Валюта цен">
+            {CURRENCIES.map((code) => (
+              <button
+                key={code}
+                type="button"
+                className={
+                  code === currency
+                    ? 'currency__btn currency__btn--active'
+                    : 'currency__btn'
+                }
+                aria-pressed={code === currency}
+                title={CURRENCY_LABELS[code]}
+                onClick={() => setCurrency(code)}
+              >
+                {CURRENCY_SYMBOLS[code]}
+              </button>
+            ))}
+          </div>
 
           <a
             className="btn btn--primary btn--sm header__cta"

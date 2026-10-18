@@ -1,5 +1,7 @@
 import type { Product } from '../types'
-import { buyUrl, formatPrice } from '../helpers/telegram'
+import { buyUrl } from '../helpers/telegram'
+import { formatPrice } from '../helpers/currency'
+import { useCurrency } from './CurrencyProvider'
 import './ProductCard.css'
 
 type Props = {
@@ -21,6 +23,8 @@ function initialsOf(subcategory: string): string {
 
 /** Карточка товара: используется и на главной, и в каталоге. */
 export default function ProductCard({ product, badge }: Props) {
+  const { currency } = useCurrency()
+
   return (
     <article className="product card">
       <div className="product__thumb" aria-hidden="true">
@@ -36,10 +40,10 @@ export default function ProductCard({ product, badge }: Props) {
       </div>
 
       <div className="product__bottom">
-        <span className="product__price">{formatPrice(product.price)}</span>
+        <span className="product__price">{formatPrice(product, currency)}</span>
         <a
           className="btn btn--primary btn--sm"
-          href={buyUrl(product)}
+          href={buyUrl(product, currency)}
           target="_blank"
           rel="noreferrer"
         >

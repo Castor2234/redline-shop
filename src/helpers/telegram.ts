@@ -1,5 +1,6 @@
 import { SHOP } from '../config'
 import type { Product } from '../types'
+import { formatPrice, type Currency } from './currency'
 
 /** Ссылка на диалог в Telegram. */
 export function chatUrl(username: string, text?: string): string {
@@ -12,15 +13,12 @@ export function chatUrl(username: string, text?: string): string {
 /**
  * Ссылка на покупку: открывает переписку с продавцом
  * и подставляет в поле ввода готовое сообщение о товаре.
+ * Цена в сообщении показывается в текущей валюте пользователя.
  */
-export function buyUrl(product: Product): string {
+export function buyUrl(product: Product, currency: Currency): string {
   const text =
     `Здравствуйте! Хочу купить: ${product.category === 'Games' ? '' : 'другое — '}` +
-    `${product.subcategory} — ${product.title} за ${product.price} ₽.\n` +
+    `${product.subcategory} — ${product.title} за ${formatPrice(product, currency)}.\n` +
     `Что нужно: ${product.requires}.`
   return chatUrl(SHOP.sellerUsername, text)
-}
-
-export function formatPrice(price: number): string {
-  return `${price.toLocaleString('ru-RU')} ₽`
 }

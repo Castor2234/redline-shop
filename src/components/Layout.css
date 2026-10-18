@@ -55,6 +55,41 @@
   color: var(--brand);
 }
 
+/* Переключатель валюты в шапке: ₽ (RUB) / Br (BYN). */
+.currency {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-soft);
+}
+
+.currency__btn {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 2px;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition:
+    color 0.18s,
+    background-color 0.18s;
+}
+
+.currency__btn:hover {
+  color: var(--text);
+}
+
+.currency__btn--active {
+  background: var(--brand);
+  color: #fff;
+}
+
 .nav {
   display: flex;
   align-items: center;
@@ -181,7 +216,8 @@
     overflow-x: auto;
   }
 
-  .header__cta {
+  /* Переключатель прижат вправо, кнопка Telegram — сразу за ним. */
+  .currency {
     margin-left: auto;
   }
 
