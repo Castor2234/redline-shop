@@ -5,6 +5,22 @@
   gap: 16px;
 }
 
+/* Первая карточка — золотой фон, выделяем её среди остальных. */
+.gift.card.gift--golden {
+  background: #c2bf15;
+  color: #0b0b0d;
+  text-shadow: 2px 2px #050505;
+}
+
+.gift.card.gift--golden .gift__note {
+  color: rgba(11, 11, 13, 0.7);
+}
+
+.gift.card.gift--golden .gift__image {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: #0b0b0d;
+}
+
 /* Карточка: картинка эмодзи слева, название и ссылка справа. */
 .gift {
   display: flex;

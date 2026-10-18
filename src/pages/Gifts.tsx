@@ -19,7 +19,7 @@ const GIFT_EMOJIS: GiftEmoji[] = [
   {
     title: 'БОЛЬШЕ ПОДАРКОВ, КУПИТЬ ДОНАТ',
     image: '/assets/brawl_crates.jpg',
-    link: 'https://t.me/mobilegemss',
+    link: 'https://t.me/+B7kDy3rltexiMzFi',
   },
   {
     title: 'Спайк ОК',
@@ -80,8 +80,11 @@ export default function Gifts() {
       <section className="section gifts">
         <div className="container">
           <div className="gifts__grid">
-            {GIFT_EMOJIS.map((emoji) => (
-              <article className="gift card" key={emoji.title}>
+            {GIFT_EMOJIS.map((emoji, index) => (
+              <article
+                className={`gift card${index === 0 ? ' gift--golden' : ''}`}
+                key={emoji.title}
+              >
                 <img
                   className="gift__image"
                   src={emoji.image}
