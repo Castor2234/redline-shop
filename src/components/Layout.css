@@ -119,6 +119,51 @@
   border-bottom-color: var(--brand);
 }
 
+/*
+ * Золотое свечение кнопки «Подарки»: тёплый ореол, который мягко пульсирует.
+ * Правила идут после .nav__link--active — золото важнее красного акцента.
+ */
+.nav__link--gold {
+  color: var(--gold);
+  border-bottom-color: var(--gold-soft);
+  text-shadow: 0 0 12px var(--gold-soft);
+  box-shadow: 0 0 14px var(--gold-soft);
+  animation: nav-gold-pulse 2.2s ease-in-out infinite;
+}
+
+.nav__link--gold:hover {
+  color: var(--gold-hover);
+  border-bottom-color: var(--gold);
+}
+
+/* На /gifts активная страница остаётся золотой, а не красной. */
+.nav__link--gold.nav__link--active {
+  color: var(--gold-hover);
+  border-bottom-color: var(--gold);
+}
+
+@keyframes nav-gold-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 6px var(--gold-soft);
+    text-shadow: 0 0 6px var(--gold-soft);
+  }
+  50% {
+    box-shadow:
+      0 0 18px var(--gold-glow),
+      0 0 42px var(--gold-soft);
+    text-shadow: 0 0 14px var(--gold-glow);
+  }
+}
+
+/* Доступность: без анимации остаётся статичный ореол. */
+@media (prefers-reduced-motion: reduce) {
+  .nav__link--gold {
+    animation: none;
+    box-shadow: 0 0 12px var(--gold-soft);
+  }
+}
+
 .main {
   flex: 1;
 }

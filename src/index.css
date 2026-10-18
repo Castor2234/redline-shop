@@ -27,6 +27,12 @@
   --brand-soft: rgba(225, 29, 46, 0.14);
   --brand-glow: rgba(225, 29, 46, 0.4);
 
+  /* Золото — свечение кнопки «Подарки» в шапке. */
+  --gold: #ffd700;
+  --gold-hover: #ffe566;
+  --gold-soft: rgba(255, 215, 0, 0.35);
+  --gold-glow: rgba(255, 215, 0, 0.8);
+
   --text: #ececf1;
   --text-muted: #9c9cab;
 

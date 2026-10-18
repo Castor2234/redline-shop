@@ -5,10 +5,18 @@ import { CURRENCIES, CURRENCY_LABELS, CURRENCY_SYMBOLS } from '../helpers/curren
 import { useCurrency } from './CurrencyProvider'
 import './Layout.css'
 
-const NAV_ITEMS = [
+type NavItem = {
+  to: string
+  label: string
+  end: boolean
+  /** Золотое пульсирующее свечение в шапке. */
+  gold?: boolean
+}
+
+const NAV_ITEMS: NavItem[] = [
   { to: '/', label: 'Главная', end: true },
+  { to: '/gifts', label: 'Подарки', end: false, gold: true },
   { to: '/catalog', label: 'Каталог', end: false },
-  { to: '/gifts', label: 'Подарки', end: false },
   { to: '/faq', label: 'Вопросы', end: false },
 ]
 
@@ -36,7 +44,13 @@ export default function Layout() {
                 to={item.to}
                 end={item.end}
                 className={({ isActive }) =>
-                  isActive ? 'nav__link nav__link--active' : 'nav__link'
+                  [
+                    'nav__link',
+                    isActive ? 'nav__link--active' : '',
+                    item.gold ? 'nav__link--gold' : '',
+                  ]
+                    .filter(Boolean)
+                    .join(' ')
                 }
               >
                 {item.label}

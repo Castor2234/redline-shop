@@ -73,23 +73,6 @@ export default function Main() {
       <section className="section">
         <div className="container">
           <div className="section-title">
-            <h2>О магазине</h2>
-            <p>Без корзины и регистрации — заказ оформляется в переписке.</p>
-          </div>
-          <div className="features">
-            {FEATURES.map((feature) => (
-              <div className="feature card" key={feature.title}>
-                <span className="feature__title">{feature.title}</span>
-                <p className="feature__text">{feature.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <div className="section-title">
             <h2>Популярные категории</h2>
             <Link className="section-link" to="/catalog">
               Весь каталог →
@@ -125,6 +108,23 @@ export default function Main() {
                 </Link>
               )
             })}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="section-title">
+            <h2>О магазине</h2>
+            <p>Без корзины и регистрации — заказ оформляется в переписке.</p>
+          </div>
+          <div className="features">
+            {FEATURES.map((feature) => (
+              <div className="feature card" key={feature.title}>
+                <span className="feature__title">{feature.title}</span>
+                <p className="feature__text">{feature.text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
