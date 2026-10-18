@@ -8,6 +8,7 @@ import './Layout.css'
 const NAV_ITEMS = [
   { to: '/', label: 'Главная', end: true },
   { to: '/catalog', label: 'Каталог', end: false },
+  { to: '/gifts', label: 'Подарки', end: false },
   { to: '/faq', label: 'Вопросы', end: false },
 ]
 

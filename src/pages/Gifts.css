@@ -1,0 +1,54 @@
+/* Сетка карточек с подарками. */
+.gifts__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+/* Карточка: картинка эмодзи слева, название и ссылка справа. */
+.gift {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+}
+
+.gift__image {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+}
+
+.gift__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+}
+
+.gift__title {
+  font-size: 22px;
+}
+
+.gift__note {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 420px) {
+  .gift {
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .gift__image {
+    width: 56px;
+    height: 56px;
+  }
+}
