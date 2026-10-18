@@ -8,6 +8,7 @@ import {
   popularSubcategories,
 } from '../helpers/products'
 import { chatUrl } from '../helpers/telegram'
+import { playCroak } from '../helpers/sound'
 import { formatAmount, productPrice } from '../helpers/currency'
 import { useCurrency } from '../components/CurrencyProvider'
 import './Main.css'
@@ -67,6 +68,17 @@ export default function Main() {
               Написать продавцу
             </a>
           </div>
+
+          {/* Лягушка-водяной знак: по центру контейнера, текст поверх неё. */}
+          <button
+            type="button"
+            className="hero__frog"
+            aria-label="Квакнуть"
+            title="Квак!"
+            onClick={playCroak}
+          >
+            <img src="/assets/frog.png" alt="" draggable={false} />
+          </button>
         </div>
       </section>
 

@@ -1,4 +1,4 @@
-/* Первый экран: название магазина и кнопки. */
+/* Первый экран: текст поверх лягушки-водяного знака. */
 .hero {
   padding: 76px 0 64px;
   border-bottom: 1px solid var(--border);
@@ -8,11 +8,75 @@
 }
 
 .hero__inner {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 18px;
   max-width: 800px;
+}
+
+/* Текст и кнопки поверх лягушки: часть картинки видна между строками. */
+.hero__inner > :not(.hero__frog) {
+  position: relative;
+  z-index: 1;
+}
+
+/*
+ * Лягушка-пасхалка: строго по центру контейнера .hero__inner, за текстом.
+ * Приглушена (opacity), чтобы белый текст читался поверх неё.
+ * Клик = квак (слой поверх предыдущих кваков).
+ */
+.hero__frog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hero__frog img {
+  display: block;
+  width: clamp(500px, 65%, 700px);
+  height: auto;
+  opacity: 0.45;
+  transition:
+    transform 0.18s,
+    opacity 0.18s;
+}
+
+.hero__frog:hover img {
+  transform: scale(1.04);
+  opacity: 0.6;
+}
+
+.hero__frog:active img {
+  transform: scale(0.97);
+}
+
+/* Узкие экраны: меньше и тише, чтобы не спорить с текстом. */
+@media (max-width: 760px) {
+  .hero__frog img {
+    width: 85%;
+    opacity: 0.35;
+  }
+}
+
+/* Доступность: без анимации убираем только движение, звук остаётся. */
+@media (prefers-reduced-motion: reduce) {
+  .hero__frog,
+  .hero__frog img {
+    transition: none;
+  }
+
+  .hero__frog:hover img,
+  .hero__frog:active img {
+    transform: none;
+  }
 }
 
 .hero__accent {
