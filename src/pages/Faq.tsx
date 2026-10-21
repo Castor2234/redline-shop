@@ -108,7 +108,19 @@ export default function FAQ() {
                   >
                     @Mobile_Games
                   </a>
-                  <p className="muted">Ютуб канал продавца с 50 тысячами подписчиков.</p>
+                  <p className="muted">Основной ютуб канал с 50 тысячами подписчиков.</p>
+              </div>
+              <div className="faq__contact" key="Mobile Games">
+                  <span className="tag tag--brand">Ютуб Канал</span>
+                  <a
+                    className="faq__contact-name"
+                    href="https://www.youtube.com/@ReDLineShop100"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    @ReDLineShop100
+                  </a>
+                  <p className="muted">Второй ютуб канал про магазин Redline Shop.</p>
                 </div>
             </div>
           </aside>
