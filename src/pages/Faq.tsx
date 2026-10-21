@@ -1,4 +1,3 @@
-import { Link } from 'react-router'
 import { CONTACTS, SHOP } from '../config'
 import { chatUrl } from '../helpers/telegram'
 import './Faq.css'
@@ -66,8 +65,7 @@ export default function FAQ() {
             <div className="faq__reviews card">
               <h3>Отзывы</h3>
               <p className="muted">
-                Реальные отзывы покупателей — в открытом Telegram-канале. Там
-                же видна история выдачи заказов.
+                Реальные отзывы покупателей — в открытом Telegram и ВК каналах.
               </p>
               <a
                 className="btn btn--primary"
@@ -75,11 +73,16 @@ export default function FAQ() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Отзывы {SHOP.reviewsLabel}
+                Отзывы телеграм
               </a>
-              <Link className="faq__side-link" to="/catalog">
-                Перейти в каталог →
-              </Link>
+              <a
+                className="btn btn--primary"
+                href="https://vk.com/topic-147969897_48891442"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Отзывы ВКонтакте
+              </a>
             </div>
 
             <div className="faq__contacts card">

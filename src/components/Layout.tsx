@@ -1,4 +1,5 @@
 import { Link, NavLink, Outlet } from 'react-router'
+import MetrikaTracker from './MetrikaTracker'
 import { SHOP } from '../config'
 import { chatUrl } from '../helpers/telegram'
 import { CURRENCIES, CURRENCY_LABELS, CURRENCY_SYMBOLS } from '../helpers/currency'
@@ -26,6 +27,7 @@ export default function Layout() {
 
   return (
     <>
+    <MetrikaTracker />
       {/* Фон раскладки: pattern из assets за контентом всех страниц. */}
       <div className="layout__bg" aria-hidden="true" />
 
