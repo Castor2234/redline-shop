@@ -4,6 +4,7 @@ import Main from "./pages/Main";
 import FAQ from "./pages/Faq";
 import Catalog from "./pages/Catalog";
 import Gifts from "./pages/Gifts";
+import Charity from "./pages/Charity";
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ export const router = createBrowserRouter([
       { path: "faq", element: <FAQ /> },
       { path: "catalog", element: <Catalog /> },
       { path: "gifts", element: <Gifts /> },
+      { path: "charity", element: <Charity /> },
     ],
   },
 ]);

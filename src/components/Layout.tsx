@@ -19,6 +19,7 @@ const NAV_ITEMS: NavItem[] = [
   { to: '/gifts', label: 'Подарки', end: false, gold: true },
   { to: '/catalog', label: 'Каталог', end: false },
   { to: '/faq', label: 'Вопросы', end: false },
+  { to: '/charity', label: 'Благотворительность', end: false },
 ]
 
 /** Общая оболочка сайта: шапка с навигацией, контент и подвал. */

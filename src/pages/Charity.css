@@ -1,0 +1,50 @@
+/* Благотворительность: две картинки в начале страницы, текст ниже. */
+.charity__images {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.charity__image {
+  display: block;
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+}
+
+.charity__text {
+  max-width: 1200px;
+}
+
+.charity__placeholder {
+  margin-top: 14px;
+  color: var(--text-muted);
+  font-size: 20px;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+/* Кликабельные ссылки в тексте благодарности. */
+.charity__placeholder a {
+  color: var(--brand-hover);
+  text-decoration: underline;
+}
+
+.charity__placeholder a:hover {
+  color: var(--brand);
+}
+
+@media (max-width: 500px) {
+  .charity__images {
+    gap: 12px;
+  }
+
+  .charity__image {
+    max-width: 100%;
+  }
+}

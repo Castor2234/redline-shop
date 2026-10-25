@@ -14,7 +14,7 @@ const categories = [
 const esc = (s) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-const staticPaths = ['/', '/faq', '/catalog', '/gifts'];
+const staticPaths = ['/', '/faq', '/catalog', '/gifts', '/charity'];
 
 const catalogUrls = categories.map(({ section, category }) => {
   const qs = new URLSearchParams({ section, category }).toString(); // spaces become +
