@@ -30,7 +30,6 @@
  */
 .hero__frog {
   position: absolute;
-  inset: 0;
   z-index: 0;
   display: flex;
   align-items: center;
@@ -39,6 +38,12 @@
   background: none;
   border: none;
   cursor: pointer;
+  /* Меньшая кликабельная область, по центру контейнера. */
+  width: 340px;
+  height: 340px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .hero__frog img {

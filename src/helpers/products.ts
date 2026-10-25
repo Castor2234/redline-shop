@@ -174,7 +174,7 @@ export const PRODUCTS: Product[] = [
     keywords: ['клэш',"клеш", 'пропуск', 'ройал'],
   },
   {
-    id: 'cl-pass',
+    id: 'cl-pass-store',
     category: 'Games',
     subcategory: 'Clash Royale',
     title: 'Pass Royale через Supercell Store',
@@ -185,7 +185,7 @@ export const PRODUCTS: Product[] = [
     keywords: ['клэш',"клеш", 'пропуск', 'ройал'],
   },
   {
-    id: 'cl-pass',
+    id: 'cl-pass-id',
     category: 'Games',
     subcategory: 'Clash Royale',
     title: 'Pass Royale через Supercell ID',

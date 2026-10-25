@@ -1,19 +1,16 @@
-import type { BigCategory, Product } from '../types'
+import type { Product } from '../types'
 
 function normalize(value: string): string {
-  return value.toLowerCase().replace(/ё/g, 'е').trim()
+  return value.toLowerCase().replace(/ё/g, 'е').replace(/\s+/g, ' ').trim()
 }
 
-/**
- * Поиск по всем товарам: подраздел, название, большой раздел и ключевые слова.
- * Запрос делится на слова — нужно совпадение каждого, порядок не важен.
- */
-export function searchProducts(products: Product[], query: string): Product[] {
-  const words = normalize(query).split(/\s+/).filter(Boolean)
-  if (words.length === 0) return products
+// Текст для поиска считается один раз на товар
+const haystackCache = new WeakMap<Product, string>()
 
-  return products.filter((product) => {
-    const haystack = normalize(
+function getHaystack(product: Product): string {
+  let cached = haystackCache.get(product)
+  if (cached === undefined) {
+    cached = normalize(
       [
         product.subcategory,
         product.title,
@@ -22,14 +19,17 @@ export function searchProducts(products: Product[], query: string): Product[] {
         ...(product.keywords ?? []),
       ].join(' '),
     )
-    return words.every((word) => haystack.includes(word))
-  })
+    haystackCache.set(product, cached)
+  }
+  return cached
 }
 
-/** Большая категория по названию подраздела (для ссылок ?category=…). */
-export function categoryOfSubcategory(
-  products: Product[],
-  subcategory: string,
-): BigCategory | undefined {
-  return products.find((product) => product.subcategory === subcategory)?.category
+export function searchProducts(products: Product[], query: string): Product[] {
+  const words = normalize(query).split(' ').filter(Boolean)
+  if (words.length === 0) return products
+
+  return products.filter((product) => {
+    const haystack = getHaystack(product)
+    return words.every((word) => haystack.includes(word))
+  })
 }
