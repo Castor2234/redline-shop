@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://redlineshop.shop/sitemap.xml
