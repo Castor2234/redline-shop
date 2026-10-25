@@ -77,7 +77,7 @@ export default function Main() {
             title="Квак!"
             onClick={playCroak}
           >
-            <img src="/assets/frog.png" alt="" draggable={false} />
+            <img src="/assets/frog.webp" alt="" draggable={false} />
           </button>
         </div>
       </section>
