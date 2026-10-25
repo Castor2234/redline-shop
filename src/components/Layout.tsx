@@ -19,6 +19,7 @@ const NAV_ITEMS: NavItem[] = [
   { to: '/gifts', label: 'Подарки', end: false, gold: true },
   { to: '/catalog', label: 'Каталог', end: false },
   { to: '/faq', label: 'Вопросы', end: false },
+  { to: '/charity', label: 'Благотворительность', end: false },
 ]
 
 /** Общая оболочка сайта: шапка с навигацией, контент и подвал. */
@@ -34,7 +35,7 @@ export default function Layout() {
       <header className="header">
         <div className="container header__inner">
           <Link className="logo" to="/" aria-label={`${SHOP.name} — на главную`}>
-            <img className="logo__icon" src="/assets/rl_icon.jpg" alt="" />
+            <img className="logo__icon" src="/assets/rl_icon.webp" alt="" />
             <span className="logo__accent">ReD</span>
             <span>Line Shop</span>
           </Link>

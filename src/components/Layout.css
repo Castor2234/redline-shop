@@ -1,5 +1,5 @@
 /*
- * Фон раскладки: background.png (тёмный паттерн красным по чёрному)
+ * Фон раскладки: background.webp (тёмный паттерн красным по чёрному)
  * под затемняющим оверлеем. Картинка сама почти чёрная (avg RGB 7,0,0),
  * поэтому оверлей слабый (0.55–0.7) — иначе узор не видно. Фиксирован,
  * z-index: -1 — фон не скроллится и прячется за контентом раскладки.
@@ -11,7 +11,7 @@
   background:
     linear-gradient(180deg, rgba(8, 8, 10, 0.55), rgba(8, 8, 10, 0.7)),
     radial-gradient(900px 420px at 50% -160px, var(--brand-soft), transparent 70%),
-    url('/assets/background.png') center / cover no-repeat;
+    url('/assets/background.webp') center / cover no-repeat;
   pointer-events: none;
 }
 
@@ -36,12 +36,13 @@
   align-items: center;
   gap: 1px;
   font: 400 30px/1 var(--font-display);
+  white-space: nowrap;
   text-transform: uppercase;
   letter-spacing: 0.02em;
   color: var(--text);
 }
 
-/* Иконка слева от текста логотипа в шапке (public/assets/rl_icon.jpg). */
+/* Иконка слева от текста логотипа в шапке (public/assets/rl_icon.webp). */
 .logo__icon {
   width: 40px;
   height: 40px;
