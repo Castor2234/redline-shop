@@ -105,7 +105,7 @@ export default function FAQ() {
                   <p className="muted">{contact.description}</p>
                 </div>
               ))}
-              <div className="faq__contact" key="Mobile Games">
+              <div className="faq__contact" key="Mobile Games1">
                   <span className="tag tag--brand">Ютуб Канал</span>
                   <a
                     className="faq__contact-name"
@@ -117,7 +117,7 @@ export default function FAQ() {
                   </a>
                   <p className="muted">Основной ютуб канал с 50 тысячами подписчиков.</p>
               </div>
-              <div className="faq__contact" key="Mobile Games">
+              <div className="faq__contact" key="Mobile Games2">
                   <span className="tag tag--brand">Ютуб Канал</span>
                   <a
                     className="faq__contact-name"
