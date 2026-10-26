@@ -90,11 +90,16 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   cursor: pointer;
+  /* add to the existing rule: */
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
   transition:
     color 0.18s,
     border-color 0.18s,
     background-color 0.18s;
 }
+
 
 .chip:hover {
   color: var(--text);
@@ -133,6 +138,9 @@
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
+  /* add to the existing rule: */
+  display: inline;
+  text-decoration: none;
 }
 
 .catalog__reset:hover {

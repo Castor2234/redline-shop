@@ -13,7 +13,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 18px;
-  max-width: 800px;
+  max-width: 1100px;
 }
 
 /* Текст и кнопки поверх лягушки: часть картинки видна между строками. */

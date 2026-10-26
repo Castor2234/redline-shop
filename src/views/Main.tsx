@@ -1,4 +1,6 @@
-import { Link } from 'react-router'
+'use client'
+
+import Link from 'next/link'
 import { SHOP } from '../config'
 import {
   BIG_CATEGORIES,
@@ -10,6 +12,7 @@ import {
 import { chatUrl } from '../helpers/telegram'
 import { playCroak } from '../helpers/sound'
 import { formatAmount, productPrice } from '../helpers/currency'
+import { catalogUrl } from '../helpers/categories'
 import { useCurrency } from '../components/CurrencyProvider'
 import './Main.css'
 
@@ -56,7 +59,7 @@ export default function Main() {
             Telegram
           </p>
           <div className="hero__actions">
-            <Link className="btn btn--primary" to="/catalog">
+            <Link className="btn btn--primary" href="/catalog">
               Смотреть каталог
             </Link>
             <a
@@ -86,7 +89,7 @@ export default function Main() {
         <div className="container">
           <div className="section-title">
             <h2>Популярные категории</h2>
-            <Link className="section-link" to="/catalog">
+            <Link className="section-link" href="/catalog">
               Весь каталог →
             </Link>
           </div>
@@ -97,17 +100,16 @@ export default function Main() {
               const minPrice = Math.min(
                 ...products.map((product) => productPrice(product, currency)),
               )
+              const section = products[0]?.category
 
               return (
                 <Link
                   className="pop-card card"
                   key={subcategory}
-                  to={`/catalog?category=${encodeURIComponent(subcategory)}`}
+                  href={catalogUrl(section, subcategory)}
                 >
                   <span className="tag">
-                    {BIG_CATEGORIES.find((c) =>
-                      products.some((p) => p.category === c.key),
-                    )?.label ?? ''}
+                    {BIG_CATEGORIES.find((c) => c.key === section)?.label ?? ''}
                   </span>
                   <span className="pop-card__name">{subcategory}</span>
                   <span className="pop-card__meta">

@@ -1,3 +1,5 @@
+'use client'
+
 import type { Product } from '../types'
 import { buyUrl } from '../helpers/telegram'
 import { formatPrice } from '../helpers/currency'

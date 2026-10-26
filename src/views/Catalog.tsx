@@ -1,10 +1,29 @@
-import { useMemo, useState } from 'react'
-import { useSearchParams } from 'react-router'
+'use client'
+
+import { useEffect, useMemo, useState } from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import ProductCard from '../components/ProductCard'
 import type { BigCategory, Product } from '../types'
 import { BIG_CATEGORIES, PRODUCTS, subcategoriesOf } from '../helpers/products'
 import { searchProducts } from '../helpers/search'
+import {
+  catalogUrl,
+  legacyCatalogRedirect,
+  subcategoryByName,
+} from '../helpers/categories'
 import './Catalog.css'
+
+type Props = {
+  /** Большой раздел из URL (/catalog/games → 'Games'). Без него показываются оба. */
+  section?: BigCategory
+  /** Имя подраздела из URL (/catalog/games/brawl-stars → 'Brawl Stars'). */
+  subcategory?: string
+  /** Заголовок <h1> страницы. */
+  heading: string
+  /** Текст под заголовком. */
+  intro: string
+}
 
 type ProductGroup = {
   subcategory: string
@@ -31,47 +50,28 @@ function groupBySubcategory(products: Product[]): ProductGroup[] {
 }
 
 /** Каталог: поиск по всем товарам, разделы Games/Other и подразделы. */
-export default function Catalog() {
-  const [params, setParams] = useSearchParams()
+export default function Catalog({ section, subcategory, heading, intro }: Props) {
+  const router = useRouter()
   const [query, setQuery] = useState('')
 
-  const categoryParam = params.get('category')
-  const sectionParam = params.get('section')
-
-  // Большой раздел берётся из ?section=, подраздел — из ?category=
-  const section: 'all' | BigCategory =
-    sectionParam === 'Games' || sectionParam === 'Other' ? sectionParam : 'all'
-  const activeSub = categoryParam
-
-  /** Обновляет URL-параметры фильтра (replace, чтобы не засорять историю). */
-  function setFilter(next: { section?: string; category?: string | null }) {
-    const merged = new URLSearchParams(params)
-    if ('section' in next) {
-      if (next.section) merged.set('section', next.section)
-      else merged.delete('section')
-    }
-    if ('category' in next) {
-      if (next.category) merged.set('category', next.category)
-      else merged.delete('category')
-    }
-    setParams(merged, { replace: true })
-  }
-
-  function resetAll() {
-    setQuery('')
-    setParams({}, { replace: true })
-  }
+  // Старые ссылки /catalog?section=…&category=… → новые пути.
+  // Работает только на самой /catalog, где нет ни раздела, ни подраздела.
+  useEffect(() => {
+    if (section || subcategory) return
+    const target = legacyCatalogRedirect(new URLSearchParams(window.location.search))
+    if (target) router.replace(target)
+  }, [section, subcategory, router])
 
   // Поиск идёт по ВСЕМ товарам, независимо от фильтров.
   const searched = useMemo(() => searchProducts(PRODUCTS, query), [query])
 
-  // Дальше к выдаче применяются фильтры раздела и подраздела.
+  // Дальше к выдаче применяются фильтры раздела и подраздела из URL.
   const filtered = useMemo(() => {
     let list = searched
-    if (section !== 'all') list = list.filter((p) => p.category === section)
-    if (activeSub) list = list.filter((p) => p.subcategory === activeSub)
+    if (section) list = list.filter((p) => p.category === section)
+    if (subcategory) list = list.filter((p) => p.subcategory === subcategory)
     return list
-  }, [searched, section, activeSub])
+  }, [searched, section, subcategory])
 
   // Порядок групп: как в каталоге (Games, затем Other).
   const groups = useMemo(() => {
@@ -86,25 +86,19 @@ export default function Catalog() {
 
   // Чипы подразделов — для текущего большого раздела.
   const subChips = useMemo(() => {
-    const categories =
-      section === 'all'
-        ? BIG_CATEGORIES.map((c) => c.key)
-        : ([section] as BigCategory[])
-    return categories.flatMap((key) => subcategoriesOf(PRODUCTS, key))
+    const keys = section ? [section] : BIG_CATEGORIES.map((c) => c.key)
+    return keys.flatMap((key) => subcategoriesOf(PRODUCTS, key))
   }, [section])
 
   const total = filtered.length
-  const filtering = section !== 'all' || activeSub !== null || query.trim() !== ''
+  const filtering = Boolean(section || subcategory || query.trim())
 
   return (
     <>
       <section className="page-head">
         <div className="container">
-          <h1>Каталог</h1>
-          <p>
-            Два раздела — Games и Other. Поиск идёт по всем товарам сразу: по
-            названию, игре и ключевым словам.
-          </p>
+          <h1>{heading}</h1>
+          <p>{intro}</p>
         </div>
       </section>
 
@@ -134,40 +128,49 @@ export default function Catalog() {
             </label>
 
             <div className="catalog__chips" role="group" aria-label="Разделы">
-              <button
-                type="button"
-                className={section === 'all' ? 'chip chip--active' : 'chip'}
-                onClick={() => setFilter({ section: '', category: null })}
+              <Link
+                href="/catalog"
+                scroll={false}
+                className={!section ? 'chip chip--active' : 'chip'}
               >
                 Все
-              </button>
+              </Link>
               {BIG_CATEGORIES.map((category) => (
-                <button
+                <Link
                   key={category.key}
-                  type="button"
-                  className={section === category.key ? 'chip chip--active' : 'chip'}
-                  onClick={() => setFilter({ section: category.key, category: null })}
+                  href={catalogUrl(category.key)}
+                  scroll={false}
+                  className={
+                    section === category.key && !subcategory
+                      ? 'chip chip--active'
+                      : 'chip'
+                  }
                 >
                   {category.label}
-                </button>
+                </Link>
               ))}
             </div>
 
             <div className="catalog__chips" role="group" aria-label="Подразделы">
-              {subChips.map((name) => (
-                <button
-                  key={name}
-                  type="button"
-                  className={activeSub === name ? 'chip chip--active' : 'chip'}
-                  onClick={() =>
-                    activeSub === name
-                      ? setFilter({ category: null })
-                      : setFilter({ category: name })
-                  }
-                >
-                  {name}
-                </button>
-              ))}
+              {subChips.map((name) => {
+                const active = subcategory === name
+                const info = subcategoryByName(name)
+                // Повторный клик по активному чипу снимает подраздел.
+                const href = active
+                  ? catalogUrl(section)
+                  : catalogUrl(info?.section, name)
+
+                return (
+                  <Link
+                    key={name}
+                    href={href}
+                    scroll={false}
+                    className={active ? 'chip chip--active' : 'chip'}
+                  >
+                    {name}
+                  </Link>
+                )
+              })}
             </div>
           </div>
 
@@ -177,9 +180,13 @@ export default function Catalog() {
               {query ? ` по запросу «${query}»` : ''}
             </span>
             {filtering ? (
-              <button type="button" className="catalog__reset" onClick={resetAll}>
+              <Link
+                href="/catalog"
+                className="catalog__reset"
+                onClick={() => setQuery('')}
+              >
                 Сбросить фильтры ×
-              </button>
+              </Link>
             ) : null}
           </div>
 
@@ -206,9 +213,13 @@ export default function Catalog() {
             <div className="catalog__empty card">
               <h3>Ничего не нашлось</h3>
               <p className="muted">Попробуйте другой запрос или сбросьте фильтры.</p>
-              <button type="button" className="btn btn--ghost" onClick={resetAll}>
+              <Link
+                href="/catalog"
+                className="btn btn--ghost"
+                onClick={() => setQuery('')}
+              >
                 Показать всё
-              </button>
+              </Link>
             </div>
           )}
         </div>

@@ -1,11 +1,6 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from 'react'
+'use client'
+
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 import { type Currency } from '../helpers/currency'
 
 /** Ключ, под которым выбор валюты хранится в localStorage. */
@@ -33,18 +28,19 @@ function readStoredCurrency(): Currency {
 
 /** Хранит выбранную валюту и раздаёт её всем компонентам. */
 export function CurrencyProvider({ children }: { children: ReactNode }) {
-  const [currency, setCurrency] = useState<Currency>(readStoredCurrency)
+  const [currency, setCurrencyState] = useState<Currency>('RUB') // same value on server and client
 
   useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, currency)
-    } catch {
-      // Без localStorage просто не запоминаем выбор — приложение работает.
-    }
-  }, [currency])
+    const stored = readStoredCurrency()
+    if (stored !== 'RUB') setCurrencyState(stored)
+  }, [])
 
-  const value = useMemo(() => ({ currency, setCurrency }), [currency])
+  const setCurrency = useCallback((next: Currency) => {
+    setCurrencyState(next)
+    try { localStorage.setItem(STORAGE_KEY, next) } catch { /* private mode */ }
+  }, [])
 
+  const value = useMemo(() => ({ currency, setCurrency }), [currency, setCurrency])
   return <CurrencyContext.Provider value={value}>{children}</CurrencyContext.Provider>
 }
 
