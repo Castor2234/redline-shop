@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import Catalog from '@/views/Catalog'
+import Game from '@/views/Game'
 import {
   SECTION_SLUGS,
   SUBCATEGORIES,
@@ -10,7 +10,6 @@ import {
 
 type Props = { params: Promise<{ section: string; slug: string }> }
 
-// Только страницы из generateStaticParams, всё остальное — 404.
 export const dynamicParams = false
 
 export function generateStaticParams() {
@@ -20,7 +19,6 @@ export function generateStaticParams() {
   }))
 }
 
-/** Находит подраздел и проверяет, что он лежит в этом разделе (не /catalog/other/brawl-stars). */
 function resolve(section: string, slug: string) {
   const info = subcategoryBySlug(slug)
   if (!info || sectionFromSlug(section) !== info.section) return null
@@ -44,12 +42,5 @@ export default async function Page({ params }: Props) {
   const info = resolve(section, slug)
   if (!info) notFound()
 
-  return (
-    <Catalog
-      section={info.section}
-      subcategory={info.name}
-      heading={info.name}
-      intro={info.description}
-    />
-  )
+  return <Game game={info} />
 }

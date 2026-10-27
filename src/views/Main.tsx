@@ -2,17 +2,15 @@
 
 import Link from 'next/link'
 import { SHOP } from '../config'
+import GameCard from '../components/GameCard'
+import { subcategoryByName, type SubcategoryInfo } from '../helpers/categories'
 import {
-  BIG_CATEGORIES,
   PRODUCTS,
-  productsOfSubcategory,
   productsWord,
   popularSubcategories,
 } from '../helpers/products'
 import { chatUrl } from '../helpers/telegram'
 import { playCroak } from '../helpers/sound'
-import { formatAmount, productPrice } from '../helpers/currency'
-import { catalogUrl } from '../helpers/categories'
 import { useCurrency } from '../components/CurrencyProvider'
 import './Main.css'
 
@@ -39,11 +37,14 @@ const FEATURES = [
   },
 ]
 
+
 /** Главная: короткая инфо о магазине и популярные категории. */
 export default function Main() {
-  const { currency } = useCurrency()
   const telegramUrl = chatUrl(SHOP.sellerUsername)
   const popular = popularSubcategories(PRODUCTS, POPULAR_LIMIT)
+  .map(subcategoryByName)
+  .filter((game): game is SubcategoryInfo => Boolean(game))
+  
 
   return (
     <>
@@ -95,33 +96,9 @@ export default function Main() {
           </div>
 
           <div className="pop-grid">
-            {popular.map((subcategory) => {
-              const products = productsOfSubcategory(PRODUCTS, subcategory)
-              const minPrice = Math.min(
-                ...products.map((product) => productPrice(product, currency)),
-              )
-              const section = products[0]?.category
-
-              return (
-                <Link
-                  className="pop-card card"
-                  key={subcategory}
-                  href={catalogUrl(section, subcategory)}
-                >
-                  <span className="tag">
-                    {BIG_CATEGORIES.find((c) => c.key === section)?.label ?? ''}
-                  </span>
-                  <span className="pop-card__name">{subcategory}</span>
-                  <span className="pop-card__meta">
-                    {products.length} {productsWord(products.length)} · от{' '}
-                    {formatAmount(minPrice, currency)}
-                  </span>
-                  <span className="pop-card__arrow" aria-hidden="true">
-                    →
-                  </span>
-                </Link>
-              )
-            })}
+            {popular.map((game) => (
+              <GameCard key={game.slug} game={game} />
+            ))}
           </div>
         </div>
       </section>

@@ -3,10 +3,10 @@ import Catalog from '@/views/Catalog'
 
 export const metadata: Metadata = {
   title: 'Каталог',
-  description: 'Каталог игровых товаров и подписок: гемы, пропуска, ChatGPT и другое. Цены в RUB и BYN, заказ в Telegram.',
+  description: 'Каталог игр и сервисов: Brawl Stars, Clash Royale, ChatGPT, TikTok и другие. Внутри все товары по игре или сервису и поиск по ним.',
   alternates: { canonical: '/catalog' },
 }
 
 export default function Page() {
-  return <Catalog heading="Каталог" intro="Два раздела — Games и Other. Поиск идёт по всем товарам сразу: по названию, игре и ключевым словам." />
+  return <Catalog heading="Каталог" intro="Выберите игру или сервис. Внутри — все товары и поиск по ним." />
 }

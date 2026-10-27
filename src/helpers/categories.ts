@@ -1,6 +1,6 @@
 import type { BigCategory } from '../types'
 import { SHOP } from '../config'
-import { formatAmount } from './currency'
+import { formatAmount, productPrice } from './currency'
 import { PRODUCTS, subcategoriesOf } from './products'
 
 export const SECTION_SLUGS: Record<BigCategory, string> = { Games: 'games', Other: 'other' }
@@ -23,7 +23,8 @@ const slugify = (name: string) =>
 
 function buildInfo(name: string, section: BigCategory): SubcategoryInfo {
   const items = PRODUCTS.filter((p) => p.subcategory === name)
-  const minPrice = Math.min(...items.map((p) => p.price))
+    // in buildInfo:
+  const minPrice = Math.min(...items.map((p) => productPrice(p, 'RUB')))
   const o = OVERRIDES[name] ?? {}
   return {
     name,
@@ -52,6 +53,16 @@ function assertCatalog() {
     if (slugs.has(s.slug)) throw new Error(`Дубликат slug: ${s.slug}`)
     slugs.add(s.slug)
   }
+
+  for (const p of PRODUCTS) {
+    if (p.options.length < 2) continue
+    const labels = new Set<string>()
+    for (const o of p.options) {
+      if (!o.label) throw new Error(`${p.id}: у каждого способа покупки должно быть название (label)`)
+      if (labels.has(o.label)) throw new Error(`${p.id}: способ «${o.label}» повторяется`)
+      labels.add(o.label)
+  }
+}
 }
 assertCatalog()
 

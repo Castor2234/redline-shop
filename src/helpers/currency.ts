@@ -1,4 +1,4 @@
-import type { Product } from '../types'
+import type { Product, PurchaseOption } from '../types'
 
 /**
  * Валюта отображения цен. Цены обоих номиналов хранятся в каталоге
@@ -21,9 +21,21 @@ export const CURRENCY_LABELS: Record<Currency, string> = {
   BYN: 'Белорусский рубль (Br)',
 }
 
-/** Цена товара в выбранной валюте — берётся из соответствующего поля каталога. */
+/** Цена одного способа покупки в выбранной валюте. */
+export function optionPrice(option: PurchaseOption, currency: Currency): number {
+  return currency === 'BYN' ? option.priceByn : option.price
+}
+
+/** Способы покупки от дешёвого к дорогому (в выбранной валюте). Исходный массив не меняется. */
+export function sortedOptions(product: Product, currency: Currency): PurchaseOption[] {
+  return [...product.options].sort(
+    (a, b) => optionPrice(a, currency) - optionPrice(b, currency),
+  )
+}
+
+/** Цена товара «от»: самый дешёвый способ покупки. */
 export function productPrice(product: Product, currency: Currency): number {
-  return currency === 'BYN' ? product.priceByn : product.price
+  return Math.min(...product.options.map((option) => optionPrice(option, currency)))
 }
 
 /** Число со знаком валюты: «690 ₽» или «25 Br». */
@@ -31,7 +43,7 @@ export function formatAmount(amount: number, currency: Currency): string {
   return `${amount.toLocaleString('ru-RU')} ${CURRENCY_SYMBOLS[currency]}`
 }
 
-/** Цена товара для показа: «690 ₽» или «25 Br». */
-export function formatPrice(product: Product, currency: Currency): string {
-  return formatAmount(productPrice(product, currency), currency)
+/** Цена способа покупки для показа. */
+export function formatOptionPrice(option: PurchaseOption, currency: Currency): string {
+  return formatAmount(optionPrice(option, currency), currency)
 }
