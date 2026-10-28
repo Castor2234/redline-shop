@@ -1,7 +1,7 @@
 import type { BigCategory, Product } from '../types'
 
 const SUPERCELL_ID_NOTE =
-  'Нужно добавить продавца в друзья и подождать 30 дней — только после этого заказ будет выдан.'
+  'Заход на аккаунт не нужен. Нужно добавить продавца в друзья и подождать 7 дней — только после этого заказ будет выдан.'
 
 export const PRODUCTS: Product[] = [
   // ——— Games / Brawl Stars ———
@@ -353,7 +353,7 @@ export const PRODUCTS: Product[] = [
   subcategory: 'Telegram',
   kind: 'subscription',
   title: 'Telegram premium 3 месяца подарком',
-  options: [{ price: 1499, priceByn: 55 }],
+  options: [{ price: 3999, priceByn: 150 }],
   requires: 'Имя пользователя',
   popular: false,
   keywords: ['телеграм', 'телеграмм', 'премиум'],
@@ -364,7 +364,7 @@ export const PRODUCTS: Product[] = [
   subcategory: 'Telegram',
   kind: 'subscription',
   title: 'Telegram premium 6 месяцов подарком',
-  options: [{ price: 1499, priceByn: 55 }],
+  options: [{ price: 4999, priceByn: 188 }],
   requires: 'Имя пользователя',
   popular: false,
   keywords: ['телеграм', 'телеграмм', 'премиум'],
@@ -375,11 +375,24 @@ export const PRODUCTS: Product[] = [
   subcategory: 'Telegram',
   kind: 'subscription',
   title: 'Telegram premium 1 год подарком',
-  options: [{ price: 1499, priceByn: 55 }],
+  options: [{ price: 9999, priceByn: 375 }],
   requires: 'Имя пользователя',
   popular: false,
   keywords: ['телеграм', 'телеграмм', 'премиум'],
 },
+
+// ——— Other / Youtube ———
+  {
+    id: 'tg-53543450',
+    category: 'Other',
+    subcategory: 'Youtube',
+    kind: 'currency',
+    title: 'Telegram 50 звезд',
+    options: [{ price: 699, priceByn: 25 }],
+    requires: 'id - @ аккаунта или подарком',
+    popular: false,
+    keywords: ['телеграм', 'телеграмм', 'звезд', 'звезды'],
+  },
 ]
 
 /** Оба больших раздела каталога в порядке отображения. */

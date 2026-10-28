@@ -10,7 +10,7 @@
 .charity__image {
   display: block;
   width: 100%;
-  max-width: 550px;
+  max-width: 800px;
   height: auto;
   border: 1px solid var(--border);
   border-radius: var(--radius);

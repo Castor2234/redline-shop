@@ -1,5 +1,7 @@
 import { SHOP } from '../config'
 
+const YEAR = new Date().getFullYear()
+
 /** Подвал сайта. Год считается при сборке — пересобирайте сайт после Нового года. */
 export default function Footer() {
   return (
@@ -48,7 +50,7 @@ export default function Footer() {
       </div>
 
       <div className="container footer__bottom">
-        © {new Date().getFullYear()} {SHOP.name}.
+        © {YEAR} {SHOP.name}.
       </div>
     </footer>
   )

@@ -11,7 +11,6 @@ import {
 } from '../helpers/products'
 import { chatUrl } from '../helpers/telegram'
 import { playCroak } from '../helpers/sound'
-import { useCurrency } from '../components/CurrencyProvider'
 import './Main.css'
 
 /** Сколько популярных категорий показываем на главной. */

@@ -15,12 +15,15 @@
   pointer-events: none;
 }
 
+/*
+ * Шапка: почти непрозрачный фон вместо backdrop-filter — blur поверх
+ * фиксированной картинки заметно нагружает GPU при скролле.
+ */
 .header {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(8, 8, 10, 0.88);
-  backdrop-filter: blur(12px);
+  background: rgba(8, 8, 10, 0.94);
   border-bottom: 1px solid var(--border);
 }
 
@@ -121,23 +124,40 @@
 }
 
 /*
- * Золотое свечение кнопки «Подарки»: светится изнутри (золотая заливка +
- * inset-ореол по краям) и мягко пульсирует снаружи. Правила идут после
+ * Золотое свечение кнопки «Подарки»: статичная золотая заливка и свечение
+ * изнутри/снаружи, плюс мягкая пульсация. Правила идут после
  * .nav__link--active — золото важнее красного акцента.
  */
 .nav__link--gold {
+  position: relative;
   color: var(--gold);
   border-bottom-color: var(--gold-soft);
-  text-shadow: 0 0 12px var(--gold-soft);
-  /* Внутри кнопки: полупрозрачная золотая заливка + свечение к краям. */
+  text-shadow: 0 0 10px var(--gold-soft);
   background-color: rgba(255, 215, 0, 0.12);
   box-shadow:
-    inset 0 0 14px rgba(255, 215, 0, 0.45),
-    0 0 14px var(--gold-soft);
+    inset 0 0 12px rgba(255, 215, 0, 0.4),
+    0 0 10px var(--gold-soft);
   transition:
     color 0.18s,
     border-color 0.18s,
     background-color 0.18s;
+}
+
+/*
+ * Пульсация — только прозрачность отдельного слоя. Анимация opacity не
+ * вызывает перерисовку (в отличие от box-shadow), поэтому шапка не грузит CPU/GPU.
+ */
+.nav__link--gold::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 18px rgba(255, 215, 0, 0.65),
+    0 0 18px var(--gold-glow),
+    0 0 42px var(--gold-soft);
+  opacity: 0;
+  will-change: opacity;
   animation: nav-gold-pulse 2.2s ease-in-out infinite;
 }
 
@@ -154,34 +174,21 @@
   background-color: rgba(255, 215, 0, 0.18);
 }
 
-/*
- * Пульсация дышит и изнутри (inset), и снаружи: анимация box-shadow
- * перекрывает статичную тень, поэтому inset продублирован в кадрах.
- */
 @keyframes nav-gold-pulse {
   0%,
   100% {
-    box-shadow:
-      inset 0 0 8px rgba(255, 215, 0, 0.3),
-      0 0 6px var(--gold-soft);
-    text-shadow: 0 0 6px var(--gold-soft);
+    opacity: 0;
   }
   50% {
-    box-shadow:
-      inset 0 0 18px rgba(255, 215, 0, 0.65),
-      0 0 18px var(--gold-glow),
-      0 0 42px var(--gold-soft);
-    text-shadow: 0 0 14px var(--gold-glow);
+    opacity: 1;
   }
 }
 
-/* Доступность: без анимации остаётся статичное свечение изнутри и снаружи. */
+/* Доступность: без анимации остаётся ровное свечение. */
 @media (prefers-reduced-motion: reduce) {
-  .nav__link--gold {
+  .nav__link--gold::after {
     animation: none;
-    box-shadow:
-      inset 0 0 14px rgba(255, 215, 0, 0.45),
-      0 0 12px var(--gold-soft);
+    opacity: 0.5;
   }
 }
 

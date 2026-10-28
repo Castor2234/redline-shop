@@ -6,19 +6,6 @@ export default function Charity() {
     <>
       <section className="section charity">
         <div className="container">
-          <div className="charity__images">
-            <img
-              className="charity__image"
-              src="/assets/charity-1.webp"
-              alt="Благотворительность"
-            />
-            <img
-              className="charity__image"
-              src="/assets/charity-2.webp"
-              alt="Благотворительность"
-            />
-          </div>
-
           <div className="charity__text">
             <h2>
               ❤️ ИТОГИ 4-Й НЕДЕЛИ И ВСЕГО МЕСЯЦА #ДОНАТЬТВОРИДОБРО
@@ -52,6 +39,29 @@ export default function Charity() {
               Больше фото и скринов в тг посте - <a href="https://t.me/mobilegemss/5632" target="_blank" rel="noreferrer">https://t.me/mobilegemss/5632</a>
             </p>
           </div>
+          <div className="charity__images">
+            <img
+              className="charity__image"
+              src="/assets/charity-3.webp"
+              alt="Благотворительность"
+            />
+            <img
+              className="charity__image"
+              src="/assets/charity-4.webp"
+              alt="Благотворительность"
+            />
+            <img
+              className="charity__image"
+              src="/assets/charity-1.webp"
+              alt="Благотворительность"
+            />
+            <img
+              className="charity__image"
+              src="/assets/charity-2.webp"
+              alt="Благотворительность"
+            />
+          </div>
+
         </div>
       </section>
     </>
