@@ -1,0 +1,63 @@
+/* Реферальная программа: фото сверху, текст под ним. */
+.referrals__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin-top: 14px;
+}
+
+.referrals__image-wrap {
+  width: 100%;
+  max-width: 700px;
+}
+
+.referrals__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+}
+
+.referrals__text {
+  width: 100%;
+  max-width: 800px;
+}
+
+.referrals__placeholder {
+  margin-top: 14px;
+  color: var(--text-muted);
+  font-size: 20px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.referrals__placeholder a {
+  color: var(--brand-hover);
+  text-decoration: underline;
+}
+
+.referrals__placeholder a:hover {
+  color: var(--brand);
+}
+
+.referrals__btn {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 13px 24px;
+  border: 1px solid var(--brand);
+  border-radius: var(--radius-sm);
+  background: var(--brand);
+  color: #fff;
+  font: 600 14px/1 var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 14px 34px -16px var(--brand-glow);
+}
+
+.referrals__btn:hover {
+  background: var(--brand-hover);
+  text-decoration: none;
+}

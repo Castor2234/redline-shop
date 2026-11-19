@@ -1,0 +1,27 @@
+/* Создатель: текстовая страница. */
+.creator__text {
+  max-width: 800px;
+}
+
+.creator__placeholder {
+  margin-top: 14px;
+  color: var(--text-muted);
+  font-size: 20px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.creator__placeholder a {
+  color: var(--brand-hover);
+  text-decoration: underline;
+}
+
+.creator__placeholder a:hover {
+  color: var(--brand);
+}
+
+@media (max-width: 700px) {
+  .creator__text {
+    max-width: 100%;
+  }
+}

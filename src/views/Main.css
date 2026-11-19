@@ -1,0 +1,173 @@
+/* Первый экран: текст поверх лягушки-водяного знака. */
+.hero {
+  padding: 76px 0 64px;
+  border-bottom: 1px solid var(--border);
+  background:
+    radial-gradient(600px 300px at 12% 0%, var(--brand-glow), transparent 65%),
+    linear-gradient(180deg, var(--bg-soft), transparent);
+}
+
+.hero__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  max-width: 1100px;
+}
+
+/* Текст и кнопки поверх лягушки: часть картинки видна между строками. */
+.hero__inner > :not(.hero__frog) {
+  position: relative;
+  z-index: 1;
+}
+
+/*
+ * Лягушка-пасхалка: занимает ВЕСЬ контейнер .hero__inner фоном (inset: 0),
+ * картинка целиком без обрезки (object-fit: contain) — максимальный размер
+ * на любом экране, сжатия нет. Текст поверх, лягушка приглушена (opacity).
+ * Клик = квак (слой поверх предыдущих кваков).
+ */
+.hero__frog {
+  position: absolute;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  /* Меньшая кликабельная область, по центру контейнера. */
+  width: 340px;
+  height: 340px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero__frog img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.45;
+  transition:
+    transform 0.18s,
+    opacity 0.18s;
+}
+
+.hero__frog:hover img {
+  transform: scale(1.04);
+  opacity: 0.6;
+}
+
+.hero__frog:active img {
+  transform: scale(0.97);
+}
+
+/* Доступность: без анимации убираем только движение, звук остаётся. */
+@media (prefers-reduced-motion: reduce) {
+  .hero__frog,
+  .hero__frog img {
+    transition: none;
+  }
+
+  .hero__frog:hover img,
+  .hero__frog:active img {
+    transform: none;
+  }
+}
+
+.hero__accent {
+  color: var(--brand);
+}
+
+.hero__tagline {
+  font-size: clamp(18px, 2.4vw, 24px);
+  color: var(--text);
+}
+
+.hero__meta {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* Блок «О магазине»: четыре факта. */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 20px;
+  border-left: 3px solid var(--brand);
+}
+
+.feature__title {
+  font: 400 26px/1 var(--font-display);
+  text-transform: uppercase;
+  color: var(--brand-hover);
+}
+
+.feature__text {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+
+.section-link {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brand-hover);
+}
+
+.section-link:hover {
+  text-decoration: underline;
+}
+
+/* Нижний призыв к действию. */
+.cta {
+  padding: 24px 0px 64px;
+}
+
+.cta__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 32px;
+  border: 1px solid var(--brand);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(500px 220px at 85% 0%, var(--brand-soft), transparent 70%),
+    linear-gradient(180deg, var(--surface-2), var(--surface));
+}
+
+.cta__text {
+  margin-top: 8px;
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 700px) {
+  .hero {
+    padding: 48px 0 40px;
+  }
+
+  .cta__inner {
+    padding: 24px;
+  }
+}

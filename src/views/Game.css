@@ -1,0 +1,206 @@
+.breadcrumbs {
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumbs li + li::before {
+  content: '›';
+  margin-right: 6px;
+  color: var(--border-strong);
+}
+
+.breadcrumbs a:hover {
+  color: var(--brand-hover);
+}
+
+.game__cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  padding: 24px 28px;
+}
+
+.game__cta .muted {
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+.game__related {
+  margin-top: 56px;
+}
+
+.catalog__group {
+  scroll-margin-top: 88px;
+}
+
+/* Блок «Буст» — только на странице Brawl Stars (валюта + пропуски). */
+.boost {
+  margin-top: 48px;
+  padding: 32px 0;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, var(--surface-2), var(--surface));
+}
+
+.boost__title {
+  font-size: clamp(22px, 4vw, 28px);
+  text-align: center;
+  margin-bottom: 24px;
+  letter-spacing: 0.02em;
+}
+
+.boost__image {
+  display: block;
+  max-width: 100%;
+  max-height: 420px;
+  height: auto;
+  margin: 0 auto 24px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.boost__body {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.boost__body p {
+  margin-bottom: 14px;
+}
+
+.boost__body p:last-child {
+  margin-bottom: 0;
+}
+
+.boost__list {
+  margin: 10px 0 18px;
+  padding-left: 22px;
+  color: var(--text);
+}
+
+.boost__list li {
+  margin-bottom: 8px;
+}
+
+.boost__warning {
+  margin-top: 10px;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  background: var(--brand-soft);
+  color: var(--brand-hover);
+  font-size: 14px;
+}
+
+@media (max-width: 700px) {
+  .boost {
+    margin-top: 36px;
+    padding: 24px 0;
+  }
+  .boost__image {
+    max-height: 260px;
+  }
+}
+
+/* Блок «Читы» — только на странице Brawl Stars. */
+.cheats {
+  margin-top: 48px;
+  padding: 32px 0;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, var(--surface-2), var(--surface));
+}
+
+.cheats__title {
+  font-size: clamp(22px, 4vw, 28px);
+  text-align: center;
+  margin-bottom: 24px;
+  letter-spacing: 0.02em;
+}
+
+.cheats__title a {
+  color: var(--brand-hover);
+  text-decoration: underline;
+}
+
+.cheats__title a:hover {
+  color: var(--brand);
+}
+
+.cheats__image {
+  display: block;
+  max-width: 100%;
+  max-height: 420px;
+  height: auto;
+  margin: 0 auto 24px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.cheats__body {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.cheats__body p {
+  margin-bottom: 14px;
+}
+
+.cheats__body p:last-child {
+  margin-bottom: 0;
+}
+
+.cheats__body a {
+  color: var(--brand-hover);
+  text-decoration: underline;
+}
+
+.cheats__body a:hover {
+  color: var(--brand);
+}
+
+.cheats__list {
+  margin: 10px 0 18px;
+  padding-left: 22px;
+  color: var(--text);
+}
+
+.cheats__list li {
+  margin-bottom: 8px;
+}
+
+.cheats__warning-title {
+  margin-top: 10px;
+  font-size: 16px;
+  color: var(--brand-hover);
+}
+
+@media (max-width: 700px) {
+  .cheats {
+    margin-top: 36px;
+    padding: 24px 0;
+  }
+  .cheats__image {
+    max-height: 260px;
+  }
+}

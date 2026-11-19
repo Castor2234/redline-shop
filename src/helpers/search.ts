@@ -1,4 +1,5 @@
 import type { Product } from '../types'
+import { KINDS } from './kinds'
 
 function normalize(value: string): string {
   return value.toLowerCase().replace(/ё/g, 'е').replace(/\s+/g, ' ').trim()
@@ -15,7 +16,9 @@ function getHaystack(product: Product): string {
         product.subcategory,
         product.title,
         product.category,
+        KINDS.find((kind) => kind.key === product.kind)?.label ?? '',
         product.note ?? '',
+        ...product.options.map((option) => option.label ?? ''),
         ...(product.keywords ?? []),
       ].join(' '),
     )

@@ -1,5 +1,8 @@
+'use client'
+
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-import { useLocation } from "react-router";
+
 
 declare global {
   interface Window {
@@ -10,10 +13,10 @@ declare global {
 const COUNTER_ID = 113700539;
 
 export default function MetrikaTracker() {
-  const location = useLocation();
+  const location = usePathname();
 
   useEffect(() => {
-    window.ym?.(COUNTER_ID, "hit", location.pathname + location.search);
+    window.ym?.(COUNTER_ID, "hit", location);
   }, [location]);
 
   return null;

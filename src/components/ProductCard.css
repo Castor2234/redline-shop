@@ -83,3 +83,97 @@
   color: var(--brand-hover);
   white-space: nowrap;
 }
+
+/* Карточка с несколькими способами покупки: шире обычной. */
+.product--variants {
+  grid-column: span 2;
+}
+
+.product__options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-self: stretch;
+  min-width: 0;
+  margin: 4px 0 0;
+  padding: 0;
+  border: none;
+}
+
+.product__legend {
+  padding: 0;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-soft);
+  cursor: pointer;
+  transition:
+    border-color 0.18s,
+    background-color 0.18s;
+}
+
+.option:hover {
+  border-color: var(--border-strong);
+}
+
+.option--active {
+  border-color: var(--brand);
+  background: var(--brand-soft);
+}
+
+.option__radio {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin: 2px 0 0;
+  accent-color: var(--brand);
+}
+
+.option__text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.option__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Предупреждение (например, «30 дней» у Supercell ID). */
+.option__note {
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--gold);
+}
+
+.option__note::before {
+  content: '⚠ ';
+}
+
+.option__price {
+  font: 600 14px/1.3 var(--font-body);
+  color: var(--brand-hover);
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .product--variants {
+    grid-column: 1 / -1; /* на телефоне — на всю ширину */
+  }
+}

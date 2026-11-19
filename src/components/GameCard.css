@@ -1,0 +1,49 @@
+/* Плитки игр (главная и каталог). */
+.pop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.pop-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 20px;
+  transition:
+    border-color 0.18s,
+    transform 0.18s,
+    box-shadow 0.18s;
+}
+
+.pop-card:hover {
+  border-color: var(--brand);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.pop-card__name {
+  font: 400 30px/1 var(--font-display);
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.pop-card__meta {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.pop-card__arrow {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-size: 20px;
+  color: var(--brand);
+  transition: transform 0.18s;
+}
+
+.pop-card:hover .pop-card__arrow {
+  transform: translateX(4px);
+}

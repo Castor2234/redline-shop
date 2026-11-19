@@ -1,9 +1,11 @@
+'use client'
+
 import {
   createContext,
+  useCallback,
   useContext,
-  useEffect,
   useMemo,
-  useState,
+  useSyncExternalStore,
   type ReactNode,
 } from 'react'
 import { type Currency } from '../helpers/currency'
@@ -20,30 +22,48 @@ type CurrencyContextValue = {
 
 const CurrencyContext = createContext<CurrencyContextValue | null>(null)
 
-/** Читает сохранённую валюту; если её нет — рубли по умолчанию. */
-function readStoredCurrency(): Currency {
+const listeners = new Set<() => void>()
+
+/** Запасное значение, если localStorage недоступен (приватный режим). */
+let fallback: Currency = 'RUB'
+
+function subscribe(callback: () => void) {
+  listeners.add(callback)
+  window.addEventListener('storage', callback) // выбор, сделанный в другой вкладке
+  return () => {
+    listeners.delete(callback)
+    window.removeEventListener('storage', callback)
+  }
+}
+
+function getSnapshot(): Currency {
   try {
     const stored = localStorage.getItem(STORAGE_KEY)
     if (stored === 'RUB' || stored === 'BYN') return stored
   } catch {
-    // localStorage может быть недоступен (приватный режим) — молча игнорируем.
+    // localStorage недоступен — используем запасное значение.
   }
-  return 'RUB'
+  return fallback
+}
+
+/** На сервере и при гидратации всегда рубли — HTML совпадает с клиентом. */
+const getServerSnapshot = (): Currency => 'RUB'
+
+function save(next: Currency) {
+  fallback = next
+  try {
+    localStorage.setItem(STORAGE_KEY, next)
+  } catch {
+    // Без localStorage выбор живёт только до перезагрузки — приложение работает.
+  }
+  listeners.forEach((listener) => listener())
 }
 
 /** Хранит выбранную валюту и раздаёт её всем компонентам. */
 export function CurrencyProvider({ children }: { children: ReactNode }) {
-  const [currency, setCurrency] = useState<Currency>(readStoredCurrency)
-
-  useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, currency)
-    } catch {
-      // Без localStorage просто не запоминаем выбор — приложение работает.
-    }
-  }, [currency])
-
-  const value = useMemo(() => ({ currency, setCurrency }), [currency])
+  const currency = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+  const setCurrency = useCallback((next: Currency) => save(next), [])
+  const value = useMemo(() => ({ currency, setCurrency }), [currency, setCurrency])
 
   return <CurrencyContext.Provider value={value}>{children}</CurrencyContext.Provider>
 }
