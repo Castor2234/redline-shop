@@ -13,7 +13,7 @@ export const PRODUCTS: Product[] = [
     title: '30 гемов',
     options: [{ price: 449, priceByn: 18 }],
     requires: 'Заход на аккаунт (код с почты)',
-    popular: true,
+    popular: false,
     keywords: ['бравл', 'гемы', 'gems'],
   },
   {
@@ -34,6 +34,7 @@ export const PRODUCTS: Product[] = [
     title: '170 гемов',
     options: [{ price: 1999, priceByn: 75 }],
     requires: 'Заход на аккаунт (код с почты)',
+    popular: true,
     keywords: ['бравл', 'гемы', 'gems'],
   },
   {
@@ -175,7 +176,7 @@ export const PRODUCTS: Product[] = [
     title: '200 Самоцветов',
     options: [{ price: 899, priceByn: 35}],
     requires: 'Заход на аккаунт',
-    popular: true,
+    popular: false,
     keywords: ['бутчер', 'хиро', 'butcher', 'hero'],
   },
   {
@@ -186,7 +187,7 @@ export const PRODUCTS: Product[] = [
     title: '500 Самоцветов',
     options: [{ price: 1599, priceByn: 62 }],
     requires: 'Заход на аккаунт',
-    popular: false,
+    popular: true,
     keywords: ['бутчер', 'хиро', 'butcher', 'hero'],
   },
   {
@@ -234,6 +235,63 @@ export const PRODUCTS: Product[] = [
     keywords: ['бутчер', 'хиро', 'butcher', 'hero'],
   },
 
+
+  // ——— Games / Stalker 2 ———
+  {
+    id: 'stalker-2-standard',
+    category: 'Games',
+    subcategory: 'Stalker 2',
+    kind: 'other',
+    title: 'Standard Edition',
+    options: [{ price: 8999, priceByn: 350 }],
+    requires: 'Заход на аккаунт',
+    popular: false,
+    keywords: ['сталкер', 'сталкер 2', 'stalker'],
+  },
+  {
+    id: 'stalker-2-deluxe',
+    category: 'Games',
+    subcategory: 'Stalker 2',
+    kind: 'other',
+    title: 'Deluxe Edition',
+    options: [{ price: 12499, priceByn: 480 }],
+    requires: 'Заход на аккаунт',
+    popular: false,
+    keywords: ['сталкер', 'сталкер 2', 'stalker', 'делюкс', 'deluxe'],
+  },
+  {
+    id: 'stalker-2-ultimate',
+    category: 'Games',
+    subcategory: 'Stalker 2',
+    kind: 'other',
+    title: 'Ultimate Edition',
+    options: [{ price: 15999, priceByn: 595 }],
+    requires: 'Заход на аккаунт',
+    popular: false,
+    keywords: ['сталкер', 'сталкер 2', 'stalker', 'альтимейт', 'ultimate'],
+  },
+  {
+    id: 'stalker-2-upgrade-ultimate',
+    category: 'Games',
+    subcategory: 'Stalker 2',
+    kind: 'other',
+    title: '⬆️Улучшение со Standard до Ultimate Edition',
+    options: [{ price: 13999, priceByn: 520 }],
+    requires: 'Заход на аккаунт',
+    popular: false,
+    keywords: ['сталкер', 'сталкер 2', 'stalker', 'апгрейд', 'улучшение', 'upgrade'],
+  },
+  {
+    id: 'stalker-2-dlc',
+    category: 'Games',
+    subcategory: 'Stalker 2',
+    kind: 'other',
+    title: 'DLC',
+    options: [{ price: 7999, priceByn: 310 }],
+    requires: 'Заход на аккаунт',
+    popular: false,
+    keywords: ['сталкер', 'сталкер 2', 'stalker', 'длц', 'dlc'],
+  },
 
   // ——— Other / ChatGPT ———
   {
@@ -312,7 +370,7 @@ export const PRODUCTS: Product[] = [
     title: 'TikTok 7000 монет',
     options: [{ price: 24999, priceByn: 920 }],
     requires: 'Заход на аккаунт',
-    popular: true,
+    popular: false,
     keywords: ['тикток', 'монеты'],
   },
 
