@@ -6,7 +6,7 @@ export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
-    '/', '/gifts', '/catalog', '/faq', '/charity',
+    '/', '/gifts', '/catalog', '/faq', '/charity', '/referrals', '/creator',
     ...(Object.keys(SECTION_SLUGS) as BigCategory[]).map((s) => catalogUrl(s)),
     ...SUBCATEGORIES.map((s) => catalogUrl(s.section, s.name)),
   ]

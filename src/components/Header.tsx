@@ -21,6 +21,8 @@ const NAV_ITEMS: NavItem[] = [
   { to: '/catalog', label: 'Каталог', end: false },
   { to: '/faq', label: 'Вопросы', end: false },
   { to: '/charity', label: 'Благотворительность', end: false },
+  { to: '/referrals', label: 'Рефералы', end: false },
+  { to: '/creator', label: '👑Создатель', end: false },
 ]
 
 /** Шапка сайта: логотип, навигация, переключатель валюты и кнопка Telegram. */
