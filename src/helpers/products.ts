@@ -104,8 +104,9 @@ export const PRODUCTS: Product[] = [
   title: 'Brawl Pro Pass',
   note: 'Текущий сезон',
   options: [
+    { label: 'Заход на аккаунт', price: 4999, priceByn: 190 },
     { label: 'Через Supercell Store', price: 5499, priceByn: 210 },
-    { label: 'Подарком Supercell ID', price: 6999, priceByn: 265, note: SUPERCELL_ID_NOTE },
+    
   ],
   requires: 'Заход на аккаунт (код с почты)',
   keywords: ['бравл', 'пропуск', 'пасс', 'pass', 'pro'],
