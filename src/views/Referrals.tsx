@@ -11,7 +11,7 @@ export default function Referrals() {
             <div className="referrals__image-wrap">
               <img
                 className="referrals__image"
-                src="/assets/referal.jpg"
+                src="/assets/referal.webp"
                 alt="Реферальная программа ReDLine Shop"
               />
             </div>
