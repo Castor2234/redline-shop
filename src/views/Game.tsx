@@ -7,6 +7,8 @@ import ProductCard from '../components/ProductCard'
 import { SHOP } from '../config'
 import { PRODUCTS, productsOfSubcategory } from '../helpers/products'
 import { KINDS } from '../helpers/kinds'
+import BrawlStarsBoost from '../components/BrawlStarsBoost'
+import BrawlStarsCheats from '../components/BrawlStarsCheats'
 import { searchProducts } from '../helpers/search'
 import { chatUrl } from '../helpers/telegram'
 import { SUBCATEGORIES, catalogUrl, type SubcategoryInfo } from '../helpers/categories'
@@ -135,6 +137,9 @@ export default function Game({ game }: { game: SubcategoryInfo }) {
               </button>
             </div>
           )}
+
+          {game.name === 'Brawl Stars' && <BrawlStarsBoost />}
+          {game.name === 'Brawl Stars' && <BrawlStarsCheats />}
 
           <div className="game__cta card">
             <div>

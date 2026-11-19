@@ -166,6 +166,21 @@ export const PRODUCTS: Product[] = [
   },
   
 
+    // ——— Games / Butcher Hero ———
+  {
+    id: 'bh',
+    category: 'Games',
+    subcategory: 'Butcher Hero',
+    kind: 'currency',
+    title: '200 Самоцветов',
+    options: [{ price: 899, priceByn: 35}],
+    requires: 'Заход на аккаунт',
+    popular: false,
+    keywords: ['бутчер', 'хиро', 'butcher', 'hero'],
+  },
+  
+
+
   // ——— Other / ChatGPT ———
   {
     id: 'chat-plus',
@@ -461,6 +476,18 @@ export const PRODUCTS: Product[] = [
   options: [{ price: 12999, priceByn: 490 }],
   requires: 'Заход на аккаунт',
   keywords: ['ютуб', 'ют', 'yt', 'ютьюб', 'премиум', 'лайт', 'lite'],
+},
+
+// ——— Other / VPN ———
+  {
+  id: 'vpn',
+  category: 'Other',
+  subcategory: 'VPN',
+  kind: 'subscription',
+  title: 'ReDLine VPN 1 месяц',
+  options: [{ price: 1199, priceByn: 50 }],
+  requires: '',
+  keywords: ['vpn', 'впн'],
 },
 ]
 
