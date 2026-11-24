@@ -11,7 +11,7 @@ import '@/components/Layout.css'
 export const metadata: Metadata = {
   metadataBase: new URL('https://redlineshop.shop'),
   title: { default: 'ReDLine Shop — твой помощник по донату', template: '%s | ReDLine Shop' },
-  description: 'ReDLine Shop — донат, гемы, пропуски и пополнения для игр. Цены на сайте, заказ и выдача в Telegram.',
+  description: 'ReDLine Shop (иногда называют Redwine Shop) — донат, гемы, пропуски и пополнения для игр. Цены на сайте, заказ и выдача в Telegram.',
   icons: { icon: '/favicon.png' },
   openGraph: {
     type: 'website',
