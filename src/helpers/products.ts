@@ -165,7 +165,22 @@ export const PRODUCTS: Product[] = [
     popular: false,
     keywords: ['клеш', 'клэш', 'клэнс', 'пасс'],
   },
-  
+  {
+    id: 'cl-golden-pass',
+    category: 'Games',
+    subcategory: 'Clash of Clans',
+    kind: 'pass',
+    title: 'Золотой пропуск',
+    note: 'Текущий сезон',
+    options: [
+      { label: 'Заход на аккаунт (почта)', price: 1399, priceByn: 53 },
+      { label: 'Скидочный пасс', price: 799, priceByn: 31 },
+      { label: 'Через Supercell Store', price: 1599, priceByn: 60 },
+      { label: 'Подарком Supercell ID', price: 1899, priceByn: 72, note: SUPERCELL_ID_NOTE },
+    ],
+    requires: 'Заход на аккаунт (код с почты)',
+    keywords: ['клеш', 'клэш', 'клэнс', 'пасс', 'пропуск', 'золотой пропуск'],
+  },
 
     // ——— Games / Butcher Hero ———
   {
