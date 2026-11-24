@@ -14,8 +14,8 @@ export default function BrawlStarsBoost() {
           className="boost__image"
           src="/assets/brawl_boost.webp"
           alt="Буст Brawl Stars — прокачка кубков, рангов и лиг"
-          width={450}
-          height={800}
+          width={600} 
+          height={1000}
           loading="lazy"
         />
         <div className="boost__body">

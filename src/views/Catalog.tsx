@@ -23,6 +23,8 @@ type Props = {
 export default function Catalog({ section, heading, intro }: Props) {
   const router = useRouter()
   const [query, setQuery] = useState('')
+  const [suggestionModalOpen, setSuggestionModalOpen] = useState(false)
+  const [suggestionText, setSuggestionText] = useState('')
 
   // Старые ссылки /catalog?section=…&category=… → новые пути.
   useEffect(() => {
@@ -101,6 +103,14 @@ export default function Catalog({ section, heading, intro }: Props) {
                 </Link>
               ))}
             </div>
+
+            <button
+              type="button"
+              className="catalog__suggest-btn"
+              onClick={() => setSuggestionModalOpen(true)}
+            >
+              Не нашли то, что искали?
+            </button>
           </div>
 
           <div className="catalog__meta">
@@ -151,6 +161,52 @@ export default function Catalog({ section, heading, intro }: Props) {
           )}
         </div>
       </section>
+
+      {suggestionModalOpen && (
+        <div className="modal__overlay" onClick={() => setSuggestionModalOpen(false)}>
+          <div
+            className="modal__card"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="modal__close"
+              onClick={() => setSuggestionModalOpen(false)}
+              aria-label="Закрыть"
+            >
+              ×
+            </button>
+            <h3 className="modal__title">Предложение по каталогу</h3>
+            <p className="modal__hint">
+              Напишите, какой товар или игру вы хотите видеть в каталоге. Мы подготовим ваше предложение продавцу.
+            </p>
+            <textarea
+              className="modal__textarea"
+              value={suggestionText}
+              onChange={(e) => setSuggestionText(e.target.value)}
+              placeholder="Ваше предложение…"
+              rows={4}
+            />
+            <div className="modal__actions">
+              <button
+                type="button"
+                className="btn btn--ghost modal__cancel"
+                onClick={() => setSuggestionModalOpen(false)}
+              >
+                Отмена
+              </button>
+              <a
+                href={chatUrl(SHOP.sellerUsername, `Предложение по каталогу:\n${suggestionText}`)}
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn--primary modal__send"
+              >
+                Отправить в Telegram
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }
