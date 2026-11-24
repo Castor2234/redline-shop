@@ -155,17 +155,6 @@ export const PRODUCTS: Product[] = [
 
   // ——— Games / Clash of Clans ———
   {
-    id: 'cl-event-pass',
-    category: 'Games',
-    subcategory: 'Clash of Clans',
-    kind: 'pass',
-    title: 'Event Pass',
-    options: [{ price: 999, priceByn: 38}],
-    requires: 'Заход на аккаунт (код с почты)',
-    popular: false,
-    keywords: ['клеш', 'клэш', 'клэнс', 'пасс'],
-  },
-  {
     id: 'cl-golden-pass',
     category: 'Games',
     subcategory: 'Clash of Clans',
@@ -181,6 +170,30 @@ export const PRODUCTS: Product[] = [
     requires: 'Заход на аккаунт (код с почты)',
     keywords: ['клеш', 'клэш', 'клэнс', 'пасс', 'пропуск', 'золотой пропуск'],
   },
+  {
+    id: 'cl-mini-event-pass',
+    category: 'Games',
+    subcategory: 'Clash of Clans',
+    kind: 'pass',
+    title: 'Мини пропуск события',
+    note: 'Текущий сезон',
+    options: [{ price: 799, priceByn: 32 }],
+    requires: 'Заход на аккаунт (код с почты)',
+    keywords: ['клеш', 'клэш', 'клэнс', 'пасс', 'пропуск', 'мини-событие'],
+  },
+  {
+    id: 'cl-event-pass',
+    category: 'Games',
+    subcategory: 'Clash of Clans',
+    kind: 'pass',
+    title: 'Пропуск события',
+    options: [{ price: 999, priceByn: 38}],
+    requires: 'Заход на аккаунт (код с почты)',
+    popular: false,
+    keywords: ['клеш', 'клэш', 'клэнс', 'пасс'],
+  },
+  
+  
 
     // ——— Games / Butcher Hero ———
   {
