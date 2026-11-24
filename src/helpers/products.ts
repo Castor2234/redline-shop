@@ -215,7 +215,7 @@ export const PRODUCTS: Product[] = [
     title: '500 Самоцветов',
     options: [{ price: 1599, priceByn: 62 }],
     requires: 'Заход на аккаунт',
-    popular: true,
+    popular: false,
     keywords: ['бутчер', 'хиро', 'butcher', 'hero'],
   },
   {
@@ -248,7 +248,7 @@ export const PRODUCTS: Product[] = [
     title: '6500 Самоцветов',
     options: [{ price: 12499, priceByn: 480 }],
     requires: 'Заход на аккаунт',
-    popular: false,
+    popular: true,
     keywords: ['бутчер', 'хиро', 'butcher', 'hero'],
   },
   {
@@ -259,7 +259,7 @@ export const PRODUCTS: Product[] = [
     title: '14000 Самоцветов',
     options: [{ price: 24999, priceByn: 940 }],
     requires: 'Заход на аккаунт',
-    popular: false,
+    popular: true,
     keywords: ['бутчер', 'хиро', 'butcher', 'hero'],
   },
 
