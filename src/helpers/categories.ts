@@ -73,6 +73,12 @@ export function sectionFromSlug(slug: string): BigCategory | undefined {
   return (Object.keys(SECTION_SLUGS) as BigCategory[]).find((k) => SECTION_SLUGS[k] === slug)
 }
 
+/** Человекочитаемое название большого раздела для отображения в интерфейсе. */
+export function sectionLabel(section: BigCategory): string {
+  const labels: Record<BigCategory, string> = { Games: 'Игры', Other: 'Другое' }
+  return labels[section]
+}
+
 /** Единственное место, где собираются URL каталога. */
 export function catalogUrl(section?: BigCategory, subcategory?: string): string {
   if (!section) return '/catalog'

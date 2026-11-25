@@ -13,7 +13,7 @@ export const PRODUCTS: Product[] = [
     title: '30 гемов',
     options: [{ price: 449, priceByn: 18 }],
     requires: 'Заход на аккаунт (код с почты)',
-    popular: false,
+    popular: true,
     keywords: ['бравл', 'гемы', 'gems'],
   },
   {
@@ -34,7 +34,6 @@ export const PRODUCTS: Product[] = [
     title: '170 гемов',
     options: [{ price: 1999, priceByn: 75 }],
     requires: 'Заход на аккаунт (код с почты)',
-    popular: true,
     keywords: ['бравл', 'гемы', 'gems'],
   },
   {
@@ -65,6 +64,7 @@ export const PRODUCTS: Product[] = [
     title: '2000 гемов',
     options: [{ price: 19927, priceByn: 735 }],
     requires: 'Заход на аккаунт (код с почты)',
+    beneficial: true,
     keywords: ['бравл', 'гемы', 'gems'],
   },
   {
@@ -249,6 +249,7 @@ export const PRODUCTS: Product[] = [
     options: [{ price: 12499, priceByn: 480 }],
     requires: 'Заход на аккаунт',
     popular: true,
+    beneficial: true,
     keywords: ['бутчер', 'хиро', 'butcher', 'hero'],
   },
   {
@@ -260,6 +261,7 @@ export const PRODUCTS: Product[] = [
     options: [{ price: 24999, priceByn: 940 }],
     requires: 'Заход на аккаунт',
     popular: true,
+    beneficial: true,
     keywords: ['бутчер', 'хиро', 'butcher', 'hero'],
   },
 
@@ -331,6 +333,7 @@ export const PRODUCTS: Product[] = [
     options: [{price: 4499, priceByn: 170 }],
     requires: 'Заход на аккаунт (код с почты)',
     popular: true,
+    beneficial: true,
     keywords: ['чатгпт', 'чат', 'гпт'],
   },
 
@@ -477,7 +480,7 @@ export const PRODUCTS: Product[] = [
     title: 'Telegram 2500 звезд',
     options: [{ price: 12499, priceByn: 470 }],
     requires: 'id - @ аккаунта или подарком',
-    popular: false,
+    beneficial: true,
     keywords: ['телеграм', 'телеграмм', 'звезд', 'звезды'],
   },
   {
@@ -488,7 +491,7 @@ export const PRODUCTS: Product[] = [
     title: 'Telegram 5000 звезд',
     options: [{ price: 24999, priceByn: 935 }],
     requires: 'id - @ аккаунта или подарком',
-    popular: false,
+    beneficial: true,
     keywords: ['телеграм', 'телеграмм', 'звезд', 'звезды'],
   },
 {
@@ -633,8 +636,8 @@ export const PRODUCTS: Product[] = [
 
 /** Оба больших раздела каталога в порядке отображения. */
 export const BIG_CATEGORIES: { key: BigCategory; label: string }[] = [
-  { key: 'Games', label: 'Games' },
-  { key: 'Other', label: 'Other' },
+  { key: 'Games', label: 'Игры' },
+  { key: 'Other', label: 'Другое' },
 ]
 
 /**

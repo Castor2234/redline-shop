@@ -11,7 +11,7 @@ import BrawlStarsBoost from '../components/BrawlStarsBoost'
 import BrawlStarsCheats from '../components/BrawlStarsCheats'
 import { searchProducts } from '../helpers/search'
 import { chatUrl } from '../helpers/telegram'
-import { SUBCATEGORIES, catalogUrl, type SubcategoryInfo } from '../helpers/categories'
+import { SUBCATEGORIES, catalogUrl, sectionLabel, type SubcategoryInfo } from '../helpers/categories'
 import './Catalog.css'
 import './Game.css'
 
@@ -51,7 +51,7 @@ export default function Game({ game }: { game: SubcategoryInfo }) {
                 <Link href="/catalog">Каталог</Link>
               </li>
               <li>
-                <Link href={catalogUrl(game.section)}>{game.section}</Link>
+                <Link href={catalogUrl(game.section)}>{sectionLabel(game.section)}</Link>
               </li>
               <li aria-current="page">{game.name}</li>
             </ol>
@@ -122,7 +122,7 @@ export default function Game({ game }: { game: SubcategoryInfo }) {
                     <ProductCard
                       key={product.id}
                       product={product}
-                      badge={product.popular ? 'Хит' : undefined}
+                      badge={product.beneficial ? 'Выгодно' : undefined}
                     />
                   ))}
                 </div>

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Catalog from '@/views/Catalog'
-import { SECTION_SLUGS, sectionFromSlug } from '@/helpers/categories'
+import { SECTION_SLUGS, sectionFromSlug, sectionLabel } from '@/helpers/categories'
 
 type Props = { params: Promise<{ section: string }> }
 
@@ -23,5 +23,5 @@ export default async function Page({ params }: Props) {
   const { section } = await params
   const key = sectionFromSlug(section)
   if (!key) notFound()
-  return <Catalog section={key} heading={key} intro={`Игры и сервисы раздела ${key}.`} />
+  return <Catalog section={key} heading={sectionLabel(key)} intro={`Игры и сервисы раздела ${sectionLabel(key)}.`} />
 }

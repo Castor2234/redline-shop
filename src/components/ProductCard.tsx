@@ -9,7 +9,7 @@ import './ProductCard.css'
 
 type Props = {
   product: Product
-  /** Необязательная метка в углу превью: «Хит» и т.п. */
+  /** Необязательная метка в углу превью: «Выгодно» и т.п. */
   badge?: string
 }
 
