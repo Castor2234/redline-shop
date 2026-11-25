@@ -31,8 +31,8 @@ const FEATURES = [
     text: 'На связи в Telegram — отвечаем в порядке очереди.',
   },
   {
-    title: `${PRODUCTS.length} ${productsWord(PRODUCTS.length)}`,
-    text: 'Два раздела — Games и Other: от гемов и пропусков до подписок.',
+    title: 'Любые игры и сервисы',
+    text: `Доступны для покупки. На сайте ${PRODUCTS.length} ${productsWord(PRODUCTS.length)}, но вы всегда можете написать нам для доната в другую игру/сервис.`,
   },
 ]
 
@@ -55,8 +55,7 @@ export default function Main() {
           </h1>
           <p className="hero__tagline">{SHOP.tagline}</p>
           <p className="hero__meta">
-            Выдача {SHOP.deliveryTime} · на связи {SHOP.workingHours} · отзывы в
-            Telegram
+            ⭐️4 ГОДА РАБОТАЕМ, Любые платежи, донаты · отзывы в Telegram, VK
           </p>
           <div className="hero__actions">
             <Link className="btn btn--primary" href="/catalog">
