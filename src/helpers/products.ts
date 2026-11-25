@@ -346,7 +346,7 @@ export const PRODUCTS: Product[] = [
     title: 'TikTok 70 монет',
     options: [{ price: 799, priceByn: 31 }],
     requires: 'Заход на аккаунт',
-    popular: false,
+    popular: true,
     keywords: ['тикток', 'монеты'],
   },
   {
@@ -414,7 +414,7 @@ export const PRODUCTS: Product[] = [
     title: 'Telegram 50 звезд',
     options: [{ price: 699, priceByn: 25 }],
     requires: 'id - @ аккаунта или подарком',
-    popular: true,
+    popular: false,
     keywords: ['телеграм', 'телеграмм', 'звезд', 'звезды'],
   },
   {
@@ -654,9 +654,9 @@ export function topPopular(products: Product[], limit = 4): Product[] {
  */
 const POPULAR_ORDER = [
   'Brawl Stars',
-  'ChatGPT',
-  'Telegram',
+  'Butcher Hero',
   'TikTok',
+  'ChatGPT',
 ]
 
 /**
